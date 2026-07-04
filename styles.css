@@ -1,7 +1,22 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  font-family: "yekanbakh", "yekanbakhbold";
+}
+
+@font-face {
+  font-family: "yekanbakh";
+  src:
+    url("./assets/fonts/yekan-bakh/YekanBakh-Regular.woff2") format("woff2"),
+    url("../assets/fonts/IRANSansX-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "yekanbakhbold";
+  src: url("./assets/fonts/yekan-bakh/YekanBakh-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
 }
 
 body {
