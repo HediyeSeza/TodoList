@@ -299,21 +299,115 @@
                 </p>
               </div>
             </div>
-            <div class="flex justify-center">
+            <div class="flex flex-col items-center w-full mb-8">
               <div
-                class="flex items-center gap-2 border-2 border-dashed dark:bg-[#091120] border-[#CCCCCC] dark:border-[#203E62] rounded-[10px] h-[56px] w-[328px] md:w-[744px] md:h-[57px]"
+                id="show-form-btn"
+                class="flex items-center gap-2 border-2 border-dashed dark:bg-[#091120] border-[#CCCCCC] dark:border-[#203E62] rounded-[10px] h-[56px] w-[328px] md:w-[744px] md:h-[57px] cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-[#112038] hover:border-[#007BFF] group"
               >
-                <img src="./assets/icons/Light/add.svg" alt="" />
+                <img
+                  src="./assets/icons/Light/add.svg"
+                  alt=""
+                  class="transition-transform duration-200 group-hover:scale-110"
+                />
                 <p
                   class="text-[#007BFF] font-semibold text-[14px] md:text-[16px] md:font-bold"
                 >
                   افزودن وظیقه جدید
                 </p>
               </div>
+
+              <div
+                id="inline-task-form"
+                class="hidden flex-col w-[328px] md:w-[744px] border border-[#E9E9E9] rounded-[10px] p-4 shadow-sm"
+              >
+                <input
+                  type="text"
+                  id="task-title"
+                  placeholder="نام تسک"
+                  class="w-full bg-transparent text-#7D7D7F placeholder-[#7D7D7F] focus:outline-none text-[16px] font-bold mb-2"
+                />
+                <textarea
+                  id="task-desc"
+                  placeholder="توضیحات"
+                  class="w-full bg-transparent text-#AFAEB2 placeholder-[#AFAEB2] focus:outline-none resize-none text-[14px] mb-4"
+                ></textarea>
+
+                <div class="flex items-center justify-between mt-2">
+                  <div class="relative">
+                    <button
+                      id="tags-dropdown-btn"
+                      class="flex items-center w-[74px] h-[30px] gap-1 border rounded-md px-2 py-1 text-[14px] text-[#AFAEB2] transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                    >
+                      <img
+                        id="tag-icon"
+                        src="./assets/icons/Light/tag-right.svg"
+                        alt="tags"
+                        class="w-4 h-4"
+                      />
+                      تگ‌ها
+                    </button>
+                    <!-- <div class="border-[#203E62] my-2"></div> -->
+                    <div id="tags-menu" class="hidden py-6">
+                      <div
+                        class="inline-flex border-[#EBEDEF] items-center gap-4 border-1 p-[10px] rounded-lg w-[214px] h-[43px]"
+                      >
+                        <button
+                          data-priority="low"
+                          class="priority-option align-middle w-[43px] h-[23px] py-[2px] px-[8px] gap-[8px] bg-[#C3FFF1] text-[#11A483] rounded-[4px] text-[12px] font-bold transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                        >
+                          پایین
+                        </button>
+                        <div class="w-px h-6 bg-[#EBEDEF]"></div>
+                        <button
+                          data-priority="medium"
+                          class="priority-option align-middle gap-[8px] px-[8px] py-[2px] w-[54px] h-[23px] bg-[#FFEFD6] text-[#FFAF37] rounded-[4px] text-[12px] font-semibold transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                        >
+                          متوسط
+                        </button>
+                        <div class="w-px h-6 bg-[#EBEDEF]"></div>
+                        <button
+                          data-priority="high"
+                          class="priority-option align-middle px-[8px] py-[2px] gap-[8px] bg-[#FFE2DB] text-[#FF5F37] rounded-[4px] font-semibold text-[12px] transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                        >
+                          بالا
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- selected priority and its X -->
+                <div
+                  id="selected-priority-display"
+                  class="hidden flex items-center gap-[6px] px-2 py-1 rounded-[4px] text-xs border border-[#203E62]"
+                >
+                  <button
+                    id="remove-priority-btn"
+                    class="hover:opacity-70 flex items-center justify-center cursor-pointer"
+                  >
+                    <img
+                      src="./assets/icons/Light/close-circle.svg"
+                      alt="remove"
+                      class="w-4 h-4"
+                    />
+                  </button>
+                  <span id="selected-text"></span>
+                </div>
+                <hr class="border-[#E9E9E9] my-4" />
+                <div class="flex justify-end">
+                  <button
+                    id="add-task-btn"
+                    class="px-4 py-1.5 w-[136px] h-[34px] bg-[#007BFF] opacity-60 text-white rounded-[6px] text-sm font-semibold transition-all duration-300 hover:bg-[#2d3e55] hover:text-white"
+                  >
+                    اضافه کردن تسک
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <div class="h-8"></div>
-          <div class="flex flex-col items-center gap-6">
+          <div id="active-tasks-list" class="flex flex-col gap-3 w-full"></div>
+
+          <div id="no-tasks" class="flex flex-col items-center gap-6">
             <img
               src="./assets/images/2143202_Artboard 1.png"
               alt=""
@@ -333,6 +427,7 @@
             </div>
           </div>
           <div class="h-16"></div>
+          <!-- uncomment these aswell -->
 
           <div id="todo" class="column"></div>
           <div id="in-progress" class="column"></div>
@@ -350,6 +445,8 @@
             <!-- ------------------------------ -->
             <div class="hidden md:block md:flex md:justify-between">
               <div></div>
+
+              <!-- uncomment it later -->
               <div class="gap-1 hidden md:block">
                 <h4
                   class="text-[16px] font-extrabold text-[#242424] dark:text-white"
