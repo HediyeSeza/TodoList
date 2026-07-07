@@ -57,13 +57,10 @@ function renderTasks() {
     },
   };
 
-  // ۳. رندر کردن تسک‌ها با ساختار HTML جدید
   activeTasks.forEach((task) => {
-    // اگر اولویتی ست نشده بود، به صورت پیش‌فرض روی پایین قرار بده
     const style = priorityStyles[task.priority] || priorityStyles.low;
 
     const taskElement = document.createElement("div");
-    // استفاده از relative و overflow-hidden برای نوار رنگی سمت راست
     taskElement.className =
       "card-bg relative flex items-center justify-between w-full max-w-2xl min-h-[72px] rounded-2xl pl-4 pr-0 mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
     taskElement.dir = "rtl";
