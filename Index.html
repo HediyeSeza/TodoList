@@ -17,7 +17,7 @@
       <!-- Sidebar -->
       <aside
         id="sidebar"
-        class="hidden md:block md:flex md:justify-around md:flex-col mr-4 dark:bg-[#091120]"
+        class="sidebar-bg hidden md:block md:flex md:justify-around md:flex-col mr-4 my-4 rounded-2xl drop-shadow-xl"
       >
         <div class="flex gap-3 items-center w-[85%] justify-center">
           <img
@@ -25,22 +25,17 @@
             alt=""
             class="size-12 rounded-full object-cover"
           />
-          <div class="">
-            <h2
-              class="font-extrabold text-lg text-[#242424] dark:text-[#FFFFFF]"
-            >
-              سلام، رویا
-            </h2>
-            <p class="font-semibold text-sm text-[#7D7D7F] dark:text-[#848890]">
-              سه‌شنبه، ۵ بهمن ۱۴۰۲
-            </p>
+          <div>
+            <h2 class="primary-text font-extrabold text-lg">سلام، رویا</h2>
+
+            <p id="desktop-date" class="font-semibold text-sm caption-text"></p>
           </div>
         </div>
         <div class="flex flex-col gap-6 items-center">
           <div
-            class="flex gap-4 bg-[#F5FAFF] rounded-lg w-[85%] h-11 items-center justify-between dark:bg-[#041933]"
+            class="active-bg flex gap-4 rounded-lg w-[92%] h-11 items-center"
           >
-            <div class="flex items-center gap-4 px-4">
+            <div class="flex items-center gap-4 px-3">
               <img
                 src="./assets/icons/Light/home-2.svg"
                 alt=""
@@ -51,14 +46,12 @@
                 alt=""
                 class="hidden dark:block"
               />
-              <h3
-                class="text-[#007BFF] font-semibold text-md dark:text-[#FFFFFF]"
-              >
+              <h3 class="primary font-semibold text-md dark:text-[#FFFFFF]">
                 خانه
               </h3>
             </div>
           </div>
-          <div class="flex gap-4 w-[85%] h-11 items-center">
+          <div class="flex gap-4 w-[85%] h-11 items-center px-1">
             <img
               src="./assets/icons/Light/task-square.svg"
               alt=""
@@ -70,12 +63,12 @@
               class="hidden dark:block"
             />
             <h3
-              class="text-[#525252] font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
             >
               تسک ها
             </h3>
           </div>
-          <div class="flex gap-4 w-[85%] h-11 items-center">
+          <div class="flex gap-4 w-[85%] h-11 items-center px-1">
             <img
               src="./assets/icons/Light/calendar.svg"
               alt=""
@@ -88,12 +81,12 @@
             />
 
             <h3
-              class="text-[#525252] font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
             >
               تقویم
             </h3>
           </div>
-          <div class="flex gap-4 w-[85%] h-11 items-center">
+          <div class="flex gap-4 w-[85%] h-11 items-center px-1">
             <img
               src="./assets/icons/Light/arrange-square-2.svg"
               alt=""
@@ -106,12 +99,12 @@
             />
 
             <h3
-              class="text-[#525252] font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
             >
               گزارشات
             </h3>
           </div>
-          <div class="flex gap-4 w-[85%] h-11 items-center">
+          <div class="flex gap-4 w-[85%] h-11 items-center px-1">
             <img
               src="./assets/icons/Light/setting.svg"
               alt=""
@@ -124,12 +117,12 @@
             />
 
             <h3
-              class="text-[#525252] font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
             >
               تنظیمات
             </h3>
           </div>
-          <div class="flex gap-4 w-[85%] h-11 items-center">
+          <div class="flex gap-4 w-[85%] h-11 items-center px-1">
             <img
               src="./assets/icons/Light/24-support.svg"
               alt=""
@@ -142,12 +135,12 @@
             />
 
             <h3
-              class="text-[#525252] font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
             >
               پشتیبانی
             </h3>
           </div>
-          <div class="flex gap-4 w-[85%] h-11 items-center">
+          <div class="flex gap-4 w-[85%] h-11 items-center px-1">
             <img
               src="./assets/icons/Light/profile.svg"
               alt=""
@@ -160,7 +153,7 @@
             />
 
             <h3
-              class="text-[#525252] font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
             >
               پروفایل
             </h3>
@@ -168,51 +161,54 @@
         </div>
         <div class="flex justify-cente flex-col items-center gap-6">
           <div
-            class="bg-[#F7F7F7] flex flex-row gap-1 rounded-lg p-1 w-52 h-11 justify-around items-center dark:bg-[#0C1B31]"
+            class="bg-white flex flex-row gap-1 rounded-lg p-1 w-52 h-11 justify-around items-center ]"
           >
+            <!-- دکمه روشن -->
             <div
-              class="flex w-24 h-8 gap-3 bg-white rounded-md items-center justify-center dark:bg-[#0C1B31]"
+              id="light-btn"
+              class="theme-btn theme-switch flex w-24 h-8 gap-3 bg-white rounded-md items-center justify-center dark:bg-[#0C1B31] cursor-pointer"
             >
               <img
                 src="./assets/icons/Light/sun.svg"
-                alt=""
+                alt="Sun Icon"
                 class="size-4 dark:hidden"
               />
+
               <img
                 src="./assets/icons/Dark/sun.svg"
-                alt=""
-                class="hidden dark:block"
+                alt="Sun Icon"
+                class="hidden size-4 dark:block"
               />
-              <h5
-                class="font-semibold text-[14px] text-[#525252] dark:text-[#7A7A7A]"
-              >
+
+              <h5 class="font-semibold text-[14px] secondary-text light-text">
                 روشن
               </h5>
             </div>
+
+            <!-- دکمه تاریک -->
             <div
-              class="flex w-24 h-8 gap-3 rounded-md items-center justify-center dark:bg-[#002247]"
+              id="dark-btn"
+              class="theme-btn theme-switch flex w-24 h-8 gap-3 rounded-md items-center justify-center dark:bg-[#002247] cursor-pointer"
             >
               <img
                 src="./assets/icons/Light/moon.svg"
-                alt=""
+                alt="Moon Icon"
                 class="size-4 dark:hidden"
               />
+
               <img
                 src="./assets/icons/Dark/moon.svg"
-                alt=""
-                class="hidden dark:block"
+                alt="Moon Icon"
+                class="hidden size-4 dark:block"
               />
-              <h5
-                class="font-semibold text-[14px] text-[#525252] dark:text-white"
-              >
+
+              <h5 class="font-semibold text-[14px] secondary-text light-text">
                 تاریک
               </h5>
             </div>
           </div>
-          <div
-            class="w-[208px] border-t border-[#E9E9E9] mx-auto dark:border-[#2f3132]"
-          ></div>
-          <div class="w-[80%] mr-8">
+          <div class="w-[208px] border-t soft-border"></div>
+          <div class="w-[100%] ml-2">
             <div class="flex gap-4 mr-8">
               <img
                 src="./assets/icons/Light/logout.svg"
@@ -225,7 +221,7 @@
                 class="hidden dark:block"
               />
               <h5
-                class="text-[#525252] text-[14px] font-semibold dark:text-white"
+                class="secondary-text text-[14px] font-semibold dark:text-white"
               >
                 خروج
               </h5>
@@ -235,11 +231,11 @@
       </aside>
 
       <!-- Main -->
-      <main id="main" class="bg-[#fcfcfc] dark:bg-[#060C18]">
+      <main id="main" class="main-bg">
         <!-- Header -->
         <header id="header" class="md:hidden">
           <div
-            class="flex justify-center w-full h-12 rounded-lg top-4 left-4 drop-shadow-lg items-center bg-white dark:bg-[#091120]"
+            class="card-bg flex justify-center w-full h-12 rounded-lg top-4 left-4 drop-shadow-lg items-center"
           >
             <div class="flex justify-between w-[95%]">
               <img
@@ -252,7 +248,7 @@
                 alt=""
                 class="size-6 hidden dark:block"
               />
-              <h1 class="font-bold text-md dark:text-white">کوئرا لیست</h1>
+              <h1 class="font-bold text-md secondary-text">کوئرا لیست</h1>
               <div></div>
             </div>
           </div>
@@ -265,16 +261,11 @@
               class="size-14 rounded-full object-cover"
             />
             <div>
-              <h2
-                class="font-extrabold text-lg text-[#242424] dark:text-[#FFFFFF]"
-              >
-                سلام، رویا
-              </h2>
+              <h2 class="primary-text font-extrabold text-lg">سلام، رویا</h2>
               <p
-                class="font-semibold text-sm text-[#7D7D7F] dark:text-[#848890]"
-              >
-                سه‌شنبه، ۵ بهمن ۱۴۰۲
-              </p>
+                id="mobile-date"
+                class="font-semibold text-sm caption-text"
+              ></p>
             </div>
           </div>
         </div>
@@ -286,14 +277,14 @@
         <section class="task-board">
           <div class="flex flex-col h-40 gap-8">
             <div>
-              <div class="!mr-15 md:!mr-60">
+              <div class="!mr-15 md:!mr-60 md:pt-10">
                 <h2
-                  class="text-[#242424] text-lg font-extrabold md:text-xl md:font-extrabold dark:text-white"
+                  class="primary-text text-lg font-extrabold md:text-xl md:font-extrabold py-1"
                 >
                   تسک های امروز
                 </h2>
                 <p
-                  class="text-[#696969] text-xs font-normal md:text-[14px] md:font-extrabold md:w-[744px] dark:text-[#848890]"
+                  class="muted-text text-xs font-normal md:text-[14px] md:font-extrabold md:w-[744px] secondary-text"
                 >
                   تسکی برای امروز نداری!
                 </p>
@@ -301,7 +292,7 @@
             </div>
             <div class="flex justify-center">
               <div
-                class="flex items-center gap-2 border-2 border-dashed dark:bg-[#091120] border-[#CCCCCC] dark:border-[#203E62] rounded-[10px] h-[56px] w-[328px] md:w-[744px] md:h-[57px]"
+                class="ard-bg border-2 border-dashed border-color flex items-center gap-2 dashed-border rounded-[10px] h-[56px] w-[328px] md:w-[744px] md:h-[57px]"
               >
                 <img src="./assets/icons/Light/add.svg" alt="" />
                 <p
@@ -313,20 +304,18 @@
             </div>
           </div>
           <div class="h-8"></div>
-          <div class="flex flex-col items-center gap-6">
+          <div class="flex flex-col items-center gap-6 pt-8">
             <img
               src="./assets/images/2143202_Artboard 1.png"
               alt=""
               class="opacity-50 dark:opacity-70"
             />
             <div class="gap-1 flex flex-col items-center">
-              <p
-                class="font-extrabold text-[16px] text-[#7D7D7F] dark:text-[#848890]"
-              >
+              <p class="font-extrabold text-[16px] caption-text">
                 چه کارهایی امروز برای انجام داری؟
               </p>
               <p
-                class="font-normal text-[16px] text-[#AFAEB2] dark:text-[#52555B]"
+                class="font-normal text-[16px] secondary-text dark:text-[#52555B]"
               >
                 میتونی الان تسک‌هاتو اینجا بنویسی و برنامه ریزی رو شروع کنی!
               </p>
@@ -336,14 +325,12 @@
 
           <div id="todo" class="column"></div>
           <div id="in-progress" class="column"></div>
-          <div id="done" class="column flex flex-col gap-4">
+          <div id="done" class="column flex flex-col gap-4 py-4">
             <div class="gap-1 md:hidden">
-              <h4
-                class="text-[16px] font-extrabold text-[#242424] dark:text-white"
-              >
+              <h4 class="primary-text text-[16px] font-extrabold">
                 تسک های انجام شده
               </h4>
-              <p class="text-xs font-normal text-[#696969] dark:text-[#848890]">
+              <p class="text-xs font-normal muted-text">
                 تسک را باید انجام دهید.
               </p>
             </div>
@@ -351,14 +338,10 @@
             <div class="hidden md:block md:flex md:justify-between">
               <div></div>
               <div class="gap-1 hidden md:block">
-                <h4
-                  class="text-[16px] font-extrabold text-[#242424] dark:text-white"
-                >
+                <h4 class="primary-text text-[16px] font-extrabold">
                   تسک های انجام شده
                 </h4>
-                <p
-                  class="text-xs font-normal text-[#696969] dark:text-[#848890]"
-                >
+                <p class="text-xs font-normal muted-text">
                   تسک را باید انجام دهید.
                 </p>
               </div>
@@ -370,10 +353,10 @@
             <div class="flex items-center md:justify-center">
               <div class="w-[4px] h-14 bg-[#FFAF37] rounded-lg shrink-0"></div>
               <div
-                class="relative flex items-center justify-around w-full max-w-2xl h-[72px] bg-white dark:bg-[#091120] dark:border-[#091120] border border-[#E9E9E9] rounded-2xl pl-4 overflow-hidden shadow-sm"
+                class="card-bg relative flex items-center justify-between w-full max-w-2xl h-[72px] rounded-2xl pl-4 overflow-hidden shadow-sm"
                 dir="rtl"
               >
-                <div class="flex items-center gap-4 h-full">
+                <div class="flex items-center gap-4 h-full px-3">
                   <div
                     class="flex items-center justify-center w-6 h-6 shrink-0"
                   >
@@ -381,7 +364,7 @@
                   </div>
 
                   <span
-                    class="text-[#323233] text-lg font-medium line-through decoration-[#525252] select-none dark:text-white dark:decoration-white"
+                    class="secondary-text secondary-text text-lg font-medium line-through select-none max-w-[290px] md:max-w-[500px] dark:text-white dark:decoration-white"
                   >
                     خرید میوه و سبزیجات و لبنیات برای خانه
                   </span>
@@ -389,7 +372,7 @@
                 </div>
 
                 <button
-                  class="text-gray-400 hover:text-gray-600 focus:outline-none p-1 shrink-0"
+                  class="text-gray-400 hover:text-gray-600 focus:outline-none p-2"
                 >
                   <img src="./assets/icons/Light/dots.svg" alt="" />
                 </button>
@@ -399,10 +382,10 @@
             <div class="flex items-center md:justify-center">
               <div class="w-[4px] h-14 bg-[#FF5F37] rounded-lg shrink-0"></div>
               <div
-                class="relative flex items-center justify-around w-full max-w-2xl h-[72px] bg-white border border-[#E9E9E9] dark:bg-[#091120] dark:border-[#091120] rounded-2xl pl-4 overflow-hidden shadow-sm"
+                class="card-bg relative flex items-center justify-between w-full max-w-2xl h-[72px] rounded-2xl pl-4 overflow-hidden shadow-sm"
                 dir="rtl"
               >
-                <div class="flex items-center gap-4 h-full">
+                <div class="flex items-center gap-4 h-full px-3">
                   <div
                     class="flex items-center justify-center w-6 h-6 shrink-0"
                   >
@@ -410,7 +393,7 @@
                   </div>
 
                   <span
-                    class="text-[#323233] text-lg font-medium line-through decoration-[#525252] select-none dark:text-white dark:decoration-white"
+                    class="text-[#323233] text-lg font-medium line-through secondary-text select-none max-w-[290px] md:max-w-[500px] dark:text-white dark:decoration-white"
                   >
                     تماس با مبل فروشی در مورد تاخیر در ارسال
                   </span>
@@ -418,7 +401,7 @@
                 </div>
 
                 <button
-                  class="text-gray-400 hover:text-gray-600 focus:outline-none p-1 shrink-0"
+                  class="text-gray-400 hover:text-gray-600 focus:outline-none p-2"
                 >
                   <img src="./assets/icons/Light/dots.svg" alt="" />
                 </button>
@@ -428,10 +411,10 @@
             <div class="flex items-center md:justify-center">
               <div class="w-[4px] h-14 bg-[#11A483] rounded-lg shrink-0"></div>
               <div
-                class="relative flex items-center justify-around w-full max-w-2xl min-h-[72px] py-3 bg-white border border-[#E9E9E9] dark:bg-[#091120] dark:border-[#091120] rounded-2xl pl-4 overflow-hidden shadow-sm"
+                class="card-bg relative flex items-center justify-between w-full max-w-2xl min-h-[72px] py-3 rounded-2xl pl-4 overflow-hidden shadow-sm"
                 dir="rtl"
               >
-                <div class="flex items-center gap-4 h-full">
+                <div class="flex items-center gap-4 h-full px-3">
                   <div
                     class="flex items-center justify-center w-6 h-6 shrink-0"
                   >
@@ -439,7 +422,7 @@
                   </div>
 
                   <span
-                    class="text-[#323233] text-lg font-medium line-through decoration-[#525252] select-none dark:text-white dark:decoration-white"
+                    class="text-[#323233] text-lg font-medium line-through secondary-text select-none max-w-[290px] md:max-w-[500px] dark:text-white dark:decoration-white"
                   >
                     جلسه با مرتضی در مورد مصاحبه با کارآموز ادمین پنل
                   </span>
@@ -447,7 +430,7 @@
                 </div>
 
                 <button
-                  class="text-gray-400 hover:text-gray-600 focus:outline-none p-1 shrink-0"
+                  class="text-gray-400 hover:text-gray-600 focus:outline-none p-2"
                 >
                   <img src="./assets/icons/Light/dots.svg" alt="" />
                 </button>
