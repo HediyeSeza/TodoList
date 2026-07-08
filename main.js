@@ -19,6 +19,8 @@ initApp();
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
 
+// debug
+
 function setTheme(theme) {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
@@ -53,8 +55,6 @@ function updateCurrentDate() {
   });
 
   const parts = formatter.formatToParts(today);
-
-  // debug
 
   const weekday = parts.find((p) => p.type === "weekday")?.value;
   const day = parts.find((p) => p.type === "day")?.value;
