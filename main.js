@@ -1,20 +1,20 @@
 // import { initSidebar } from "./src/components/sidebar.js";
 // import { initHeader } from "./src/components/header.js";
-// import { initTasks } from "./src/components/task.js";
-// import { initModal } from "./src/components/modal.js";
+import { initTasks } from "./src/components/task.js";
+import { initModal } from "./src/components/modal.js";
 
-// import { initStorage } from "./src/utils/storage.js";
+import { initStorage } from "./src/utils/storage.js";
 
-// function initApp() {
-//   initStorage();
+function initApp() {
+initStorage();
 
 //   initSidebar();
 //   initHeader();
-//   initTasks();
-//   initModal();
-// }
+initTasks();
+initModal();
+}
 
-// initApp();
+initApp();
 
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
