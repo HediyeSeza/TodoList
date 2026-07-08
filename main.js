@@ -19,6 +19,8 @@
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
 
+// debug
+
 function setTheme(theme) {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
@@ -42,7 +44,6 @@ setTheme(localStorage.getItem("theme") || "light");
 
 //تاریخ//
 
-
 function updateCurrentDate() {
   const today = new Date();
 
@@ -55,10 +56,10 @@ function updateCurrentDate() {
 
   const parts = formatter.formatToParts(today);
 
-  const weekday = parts.find(p => p.type === "weekday")?.value;
-  const day = parts.find(p => p.type === "day")?.value;
-  const month = parts.find(p => p.type === "month")?.value;
-  const year = parts.find(p => p.type === "year")?.value;
+  const weekday = parts.find((p) => p.type === "weekday")?.value;
+  const day = parts.find((p) => p.type === "day")?.value;
+  const month = parts.find((p) => p.type === "month")?.value;
+  const year = parts.find((p) => p.type === "year")?.value;
 
   const currentDate = `${weekday}، ${day} ${month} ${year}`;
 
