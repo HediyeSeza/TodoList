@@ -15,11 +15,35 @@
   <body>
     <div id="app">
       <!-- Sidebar -->
+       <div
+  id="overlay"
+  class="fixed inset-0 bg-black/40 hidden z-40 md:hidden"
+></div>
       <aside
         id="sidebar"
-        class="sidebar-bg max-h-[950px] hidden md:block md:flex md:justify-around md:flex-col mr-4 my-4 rounded-2xl drop-shadow-xl"
-      >
-        <div class="flex gap-3 items-center w-[85%] justify-center">
+        class="sidebar-bg fixed top-0 right-0 z-50 w-[280px] h-screen translate-x-full transition-transform duration-300 md:translate-x-0 md:static md:flex md:justify-around md flex-col">
+<div class="md:hidden flex flex-row-reverse items-center justify-between px-6 py-5">
+  <button
+    id="close-btn"
+    class="flex items-center justify-center w-8 h-8"
+  >
+    <img
+      src="./assets/icons/Light/xmark.svg"
+      alt="close"
+      class="dark:hidden"
+    />
+    <img
+      src="./assets/icons/Dark/xmark.svg"
+      alt="close"
+      class="hidden dark:block"
+    />
+  </button>
+
+  <h2 class="primary-text text-lg font-bold">
+    کوئرا لیست
+  </h2>
+</div>
+        <div class="hidden md:flex gap-3 items-center w-[85%] justify-center">
           <img
             src="./assets/images/68ff308177dd64be56b77b645113191065f1ff7b.png"
             alt=""
@@ -238,16 +262,20 @@
             class="card-bg flex justify-center w-full h-12 rounded-lg top-4 left-4 drop-shadow-lg items-center"
           >
             <div class="flex justify-between w-[95%]">
-              <img
-                src="./assets/icons/Light/menu.svg"
-                alt=""
-                class="size-6 dark:hidden"
-              />
-              <img
-                src="./assets/icons/Dark/menu.svg"
-                alt=""
-                class="size-6 hidden dark:block"
-              />
+              <button
+    id="menu-btn"
+    class="md:hidden flex items-center justify-center"
+>
+    <img
+        src="./assets/icons/Light/menu.svg"
+        class="dark:hidden"
+    />
+
+    <img
+        src="./assets/icons/Dark/menu.svg"
+        class="hidden dark:block"
+    />
+</button>
               <h1 class="font-bold text-md secondary-text">کوئرا لیست</h1>
               <div></div>
             </div>
