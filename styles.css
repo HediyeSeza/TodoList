@@ -20,6 +20,7 @@
   font-weight: 700;
   font-style: normal;
 }
+/* debug */
 
 html,
 body {
@@ -31,8 +32,8 @@ body {
   background: var(--bg-main);
   color: var(--text-primary);
   transition:
-    background-color .3s ease,
-    color .3s ease;
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #app {
@@ -42,13 +43,13 @@ body {
 
 #sidebar {
   width: 260px;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 #main {
   flex: 1;
   padding: 20px;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .tasks-wrapper {
@@ -62,8 +63,8 @@ body {
   border-radius: 12px;
   padding: 12px;
   transition:
-    background-color .3s ease,
-    border-color .3s ease;
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .sidebar {
@@ -72,62 +73,62 @@ body {
 
 .card {
   background: var(--bg-card);
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .text {
   color: var(--text-primary);
-  transition: color .3s ease;
+  transition: color 0.3s ease;
 }
-.main-bg{
-    background: var(--bg-main);
-}
-
-.sidebar-bg{
-    background: var(--bg-sidebar);
+.main-bg {
+  background: var(--bg-main);
 }
 
-.card-bg{
-    background: var(--bg-card);
+.sidebar-bg {
+  background: var(--bg-sidebar);
 }
 
-.active-bg{
-    background: var(--bg-active);
+.card-bg {
+  background: var(--bg-card);
 }
 
-.primary-text{
-    color: var(--text-primary);
+.active-bg {
+  background: var(--bg-active);
 }
 
-.secondary-text{
-    color: var(--text-secondary);
+.primary-text {
+  color: var(--text-primary);
 }
 
-.muted-text{
-    color: var(--text-muted);
+.secondary-text {
+  color: var(--text-secondary);
 }
 
-.caption-text{
-    color: var(--text-caption);
+.muted-text {
+  color: var(--text-muted);
 }
 
-.border-color{
-    border-color: var(--border);
+.caption-text {
+  color: var(--text-caption);
 }
 
-.soft-border{
-    border-color: var(--border-soft);
+.border-color {
+  border-color: var(--border);
 }
 
-.dashed-border{
-    border-color: var(--border-dashed);
-}
-.light-text{
-    color: #AFAEB2;
+.soft-border {
+  border-color: var(--border-soft);
 }
 
-.dark .light-text{
-    color:#52555B;
+.dashed-border {
+  border-color: var(--border-dashed);
+}
+.light-text {
+  color: #afaeb2;
+}
+
+.dark .light-text {
+  color: #52555b;
 }
 .theme-switch {
   background: var(--bg-active);
@@ -146,6 +147,6 @@ body {
   background: var(--bg-card);
   color: var(--text-primary);
 }
-.dark .theme-btn-active{
-    background:#002247;
+.dark .theme-btn-active {
+  background: #002247;
 }

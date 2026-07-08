@@ -4,14 +4,12 @@ import { initTasks } from "./src/components/task.js";
 import { initModal } from "./src/components/modal.js";
 
 import { initStorage } from "./src/utils/storage.js";
-// import { initTheme } from "./src/utils/theme.js";
 
 function initApp() {
   initStorage();
-  // initTheme();
 
-  // initSidebar();
-  // initHeader();
+  //   initSidebar();
+  //   initHeader();
   initTasks();
   initModal();
 }
@@ -20,6 +18,8 @@ initApp();
 
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
+
+// debug
 
 function setTheme(theme) {
   if (theme === "dark") {
