@@ -1,4 +1,6 @@
-import { addTaskToStorage } from "../utils/storage.js";
+import { addTaskToStorage, getTasks, saveTasks } from "../utils/storage.js";
+
+let editTaskId = null;
 
 export function initModal() {
   const showFormBtn = document.getElementById("show-form-btn");
@@ -23,49 +25,140 @@ export function initModal() {
   const removeBtn = document.getElementById("remove-priority-btn");
   let finalPriority = null;
 
-  let selectedPriority = "low";
+  let selectedPriority = null;
 
   if (!showFormBtn || !inlineTaskForm) return;
+
+  const defaultFormParent = inlineTaskForm.parentElement;
+  const defaultFormNextSibling = inlineTaskForm.nextElementSibling;
+  let currentTaskCard = null;
 
   // open form
   if (showFormBtn) {
     showFormBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-
-      showFormBtn.classList.add("hidden");
-      showFormBtn.classList.remove("flex");
-
-      inlineTaskForm.classList.remove("hidden");
-      inlineTaskForm.classList.add("flex");
-
-      if (emptyState) emptyState.classList.add("hidden");
+      currentTaskCard = null;
+      resetFormMode();
+      openForm(null, true);
     });
   }
 
-  // close form
   document.addEventListener("click", (e) => {
-    const isFormOpen = !inlineTaskForm.classList.contains("hidden");
-    const clickedOutside =
-      !inlineTaskForm.contains(e.target) && !showFormBtn.contains(e.target);
-
-    if (isFormOpen && clickedOutside) {
+    if (
+      !inlineTaskForm.classList.contains("hidden") &&
+      !inlineTaskForm.contains(e.target) &&
+      e.target !== showFormBtn &&
+      !showFormBtn.contains(e.target) &&
+      !e.target.closest(".task-menu") &&
+      !e.target.closest(".task-menu-btn") &&
+      !e.target.closest(".task-edit-btn") &&
+      !e.target.closest(".task-delete-btn")
+    ) {
       closeForm();
     }
   });
-  // close and show the first box again
-  const closeForm = () => {
+
+  const defaultPriorityBtn = document.querySelector('[data-priority="low"]');
+
+  function updateAddButtonState() {
+    const hasTitle = titleInput.value.trim().length > 0;
+    const isEditMode = editTaskId !== null;
+
+    if (isEditMode || hasTitle) {
+      addBtn.classList.remove("opacity-60");
+      addBtn.classList.add("opacity-100");
+    } else {
+      addBtn.classList.add("opacity-60");
+      addBtn.classList.remove("opacity-100");
+    }
+  }
+
+  function setPriorityDisplay(type) {
+    selectedPriority = type;
+    if (type === "high") {
+      selectedDisplay.className =
+        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#FFE2DB] text-[#FF5F37] rounded-[4px] font-semibold text-[12px] w-fit";
+      selectedText.innerText = "بالا";
+    } else if (type === "medium") {
+      selectedDisplay.className =
+        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#FFEFD6] text-[#FFAF37] rounded-[4px] font-semibold text-[12px] w-fit";
+      selectedText.innerText = "متوسط";
+    } else if (type === "low") {
+      selectedDisplay.className =
+        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#C3FFF1] text-[#11A483] rounded-[4px] font-semibold text-[12px] w-fit";
+      selectedText.innerText = "پایین";
+    }
+    selectedDisplay.classList.remove("hidden");
+    tagBtn.classList.add("hidden");
+  }
+
+  function openForm(taskCard = null, hideShowButton = true) {
+    if (taskCard) {
+      currentTaskCard = taskCard;
+      taskCard.insertAdjacentElement("afterend", inlineTaskForm);
+    } else if (defaultFormParent) {
+      currentTaskCard = null;
+      defaultFormParent.insertBefore(inlineTaskForm, defaultFormNextSibling);
+    }
+
+    if (showFormBtn && hideShowButton) {
+      showFormBtn.classList.add("hidden");
+      showFormBtn.classList.remove("flex");
+    }
+
+    inlineTaskForm.classList.remove("hidden");
+    inlineTaskForm.classList.add("flex");
+
+    if (emptyState) emptyState.classList.add("hidden");
+    updateAddButtonState();
+  }
+
+  function resetFormMode() {
+    editTaskId = null;
+    currentTaskCard = null;
+    selectedPriority = null;
+    addBtn.textContent = "اضافه کردن تسک";
+    selectedDisplay.classList.add("hidden");
+    tagBtn.classList.remove("hidden");
+    updateAddButtonState();
+  }
+
+  function closeForm() {
     inlineTaskForm.classList.add("hidden");
     inlineTaskForm.classList.remove("flex");
 
-    showFormBtn.classList.remove("hidden");
-    showFormBtn.classList.add("flex");
+    if (showFormBtn) {
+      showFormBtn.classList.remove("hidden");
+      showFormBtn.classList.add("flex");
+    }
 
     titleInput.value = "";
     descInput.value = "";
+    resetFormMode();
+
+    if (defaultFormParent) {
+      defaultFormParent.insertBefore(inlineTaskForm, defaultFormNextSibling);
+    }
+  }
+
+  const openEditForm = (taskId, taskCard = null) => {
+    resetFormMode();
+
+    const tasks = getTasks();
+    const task = tasks.find((item) => item.id === taskId);
+    if (!task) return;
+
+    editTaskId = taskId;
+    titleInput.value = task.title;
+    descInput.value = task.desc || "";
+    selectedPriority = task.priority || "low";
+    setPriorityDisplay(selectedPriority);
+    addBtn.textContent = "ویرایش تسک";
+
+    openForm(taskCard, false);
   };
 
-  const defaultPriorityBtn = document.querySelector('[data-priority="low"]');
-  if (defaultPriorityBtn) defaultPriorityBtn.click();
+  window.openTaskFormById = openEditForm;
 
   // closing and opening our menu
   tagBtn.addEventListener("click", (e) => {
@@ -96,23 +189,8 @@ export function initModal() {
   document.querySelectorAll(".priority-option").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const type = e.target.dataset.priority; // high, medium, low
-      tagBtn.classList.add("hidden");
       tagsMenu.classList.add("hidden");
-      if (type === "high") {
-        selectedDisplay.className =
-          "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#FFE2DB] text-[#FF5F37] rounded-[4px] font-semibold text-[12px] w-fit";
-        selectedText.innerText = "بالا";
-      } else if (type === "medium") {
-        selectedDisplay.className =
-          "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#FFEFD6] text-[#FFAF37] rounded-[4px] font-semibold text-[12px] w-fit";
-        selectedText.innerText = "متوسط";
-      } else if (type === "low") {
-        selectedDisplay.className =
-          "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#C3FFF1] text-[#11A483] rounded-[4px] font-semibold text-[12px] w-fit";
-        selectedText.innerText = "پایین";
-      }
-      selectedDisplay.classList.remove("hidden");
-
+      setPriorityDisplay(type);
       selectedPriority = type;
     });
   });
@@ -122,18 +200,21 @@ export function initModal() {
     e.stopPropagation();
 
     // back to default
-    selectedPriority = "low";
+    selectedPriority = null;
 
     selectedDisplay.classList.add("hidden");
 
     tagBtn.classList.remove("hidden");
+    updateAddButtonState();
   });
 
   // task adding
 
   if (addBtn) {
+    titleInput.addEventListener("input", updateAddButtonState);
+    descInput.addEventListener("input", updateAddButtonState);
+
     addBtn.addEventListener("click", () => {
-      console.log("دکمه اضافه کردن تسک کلیک شد!");
       const title = titleInput.value.trim();
       const desc = descInput.value.trim();
 
@@ -142,22 +223,32 @@ export function initModal() {
         return;
       }
 
-      const newTask = {
-        id: Date.now(),
-        title: title,
-        desc: desc,
-        priority: selectedPriority,
-        isCompleted: false,
-      };
+      if (editTaskId !== null) {
+        const tasks = getTasks();
+        const taskIndex = tasks.findIndex((item) => item.id === editTaskId);
+        if (taskIndex !== -1) {
+          tasks[taskIndex] = {
+            ...tasks[taskIndex],
+            title,
+            desc,
+            priority: selectedPriority,
+          };
+          saveTasks(tasks);
+        }
+      } else {
+        const newTask = {
+          id: Date.now(),
+          title: title,
+          desc: desc,
+          priority: selectedPriority || "low",
+          isCompleted: false,
+        };
 
-      // save in storage
-      addTaskToStorage(newTask);
+        addTaskToStorage(newTask);
+      }
 
       // form --> to its initial state
       closeForm();
-
-      // reseting our priority
-      if (defaultPriorityBtn) defaultPriorityBtn.click();
 
       if (window.refreshTasksList) {
         window.refreshTasksList();
