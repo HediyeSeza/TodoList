@@ -1,1 +1,104 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {}
+
+ .sidebar {
+  background: var(--bg-sidebar);
+}
+
+.card {
+  background: var(--bg-card);
+  transition: background-color .3s ease;
+}
+
+.text {
+  color: var(--text-primary);
+  transition: color .3s ease;
+}
+.main-bg{
+    background: var(--bg-main);
+}
+
+.sidebar-bg{
+    background: var(--bg-sidebar);
+}
+
+.card-bg{
+    background: var(--bg-card);
+}
+
+.active-bg{
+    background: var(--bg-active);
+}
+
+.primary-text{
+    color: var(--text-primary);
+}
+
+.secondary-text{
+    color: var(--text-secondary);
+}
+
+.muted-text{
+    color: var(--text-muted);
+}
+
+.caption-text{
+    color: var(--text-caption);
+}
+
+.border-color{
+    border-color: var(--border);
+}
+
+.soft-border{
+    border-color: var(--border-soft);
+}
+
+.dashed-border{
+    border-color: var(--border-dashed);
+}
+.light-text{
+    color: #AFAEB2;
+}
+
+.dark .light-text{
+    color:#52555B;
+}
+.theme-switch{
+    background:var(--bg-theme-container);
+    border-radius:16px;
+    padding:6px;
+}
+
+.theme-btn{
+    background:transparent;
+}
+
+.theme-btn.active{
+    background:var(--bg-theme-active);
+        color:var(--text-primary);
+}
+
+.theme-btn{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    height:56px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.dark .theme-btn-active{
+    background:#002247;
+}  
+.primary-color{
+    color:var(--primary);
+}
+.divider{
+    border-color:var(--divider);
+}

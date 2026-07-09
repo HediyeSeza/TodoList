@@ -7,6 +7,7 @@
 
     <link href="/src/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
+    <link href="/src/output.css" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/variables.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -46,7 +47,7 @@
                 alt=""
                 class="hidden dark:block"
               />
-              <h3 class="primary font-semibold text-md dark:text-[#FFFFFF]">
+              <h3 class="primary font-semibold text-md primary-text">
                 خانه
               </h3>
             </div>
@@ -63,7 +64,7 @@
               class="hidden dark:block"
             />
             <h3
-              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md primary-text"
             >
               تسک ها
             </h3>
@@ -81,7 +82,7 @@
             />
 
             <h3
-              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md primary-text"
             >
               تقویم
             </h3>
@@ -99,7 +100,7 @@
             />
 
             <h3
-              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md primary-text"
             >
               گزارشات
             </h3>
@@ -117,7 +118,7 @@
             />
 
             <h3
-              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md primary-text"
             >
               تنظیمات
             </h3>
@@ -135,7 +136,7 @@
             />
 
             <h3
-              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md primary-text"
             >
               پشتیبانی
             </h3>
@@ -153,7 +154,7 @@
             />
 
             <h3
-              class="secondary-text font-semibold text-md dark:text-[#FFFFFF]"
+              class="secondary-text font-semibold text-md primary-text"
             >
               پروفایل
             </h3>
@@ -165,46 +166,46 @@
           >
             <!-- دکمه روشن -->
             <div
-              id="light-btn"
-              class="theme-btn theme-switch flex w-24 h-8 gap-3 bg-white rounded-md items-center justify-center dark:bg-[#0C1B31] cursor-pointer"
-            >
+    id="light-btn"
+    class="theme-btn flex items-center justify-center gap-2"
+>
               <img
                 src="./assets/icons/Light/sun.svg"
                 alt="Sun Icon"
-                class="size-4 dark:hidden"
+                class="w-4 h-4 dark:hidden"
               />
 
               <img
                 src="./assets/icons/Dark/sun.svg"
                 alt="Sun Icon"
-                class="hidden size-4 dark:block"
+                class="hidden w-4 h-4 dark:block"
               />
 
-              <h5 class="font-semibold text-[14px] secondary-text light-text">
-                روشن
-              </h5>
+              <span class="text-xlg font-semibold">
+        روشن
+    </span>
             </div>
 
             <!-- دکمه تاریک -->
             <div
-              id="dark-btn"
-              class="theme-btn theme-switch flex w-24 h-8 gap-3 rounded-md items-center justify-center dark:bg-[#002247] cursor-pointer"
-            >
+    id="dark-btn"
+    class="theme-btn flex items-center justify-center gap-2"
+>
               <img
                 src="./assets/icons/Light/moon.svg"
                 alt="Moon Icon"
-                class="size-4 dark:hidden"
+                class="w-4 h-4 dark:hidden"
               />
 
               <img
                 src="./assets/icons/Dark/moon.svg"
                 alt="Moon Icon"
-                class="hidden size-4 dark:block"
+                class="hidden w-4 h-4 dark:block"
               />
 
-              <h5 class="font-semibold text-[14px] secondary-text light-text">
-                تاریک
-              </h5>
+              <span class="text-xlg font-semibold">
+        تاریک
+    </span>
             </div>
           </div>
           <div class="w-[208px] border-t soft-border"></div>
@@ -221,7 +222,7 @@
                 class="hidden dark:block"
               />
               <h5
-                class="secondary-text text-[14px] font-semibold dark:text-white"
+                class="secondary-text text-[14px] font-semibold primary-text"
               >
                 خروج
               </h5>
@@ -269,9 +270,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="w-[85%] border-t border-[#F5F6F8] mx-auto md:hidden dark:hidden"
-        ></div>
+          <div class="border-t soft-border">
 
         <!-- Task Columns -->
         <section class="task-board">
@@ -296,7 +295,7 @@
               >
                 <img src="./assets/icons/Light/add.svg" alt="" />
                 <p
-                  class="text-[#007BFF] font-semibold text-[14px] md:text-[16px] md:font-bold"
+                  class="primary-color font-semibold"
                 >
                   افزودن وظیقه جدید
                 </p>
@@ -315,7 +314,7 @@
                 چه کارهایی امروز برای انجام داری؟
               </p>
               <p
-                class="font-normal text-[16px] secondary-text dark:text-[#52555B]"
+                class="font-normal text-[16px] muted-text"
               >
                 میتونی الان تسک‌هاتو اینجا بنویسی و برنامه ریزی رو شروع کنی!
               </p>
@@ -364,7 +363,7 @@
                   </div>
 
                   <span
-                    class="secondary-text secondary-text text-lg font-medium line-through select-none max-w-[290px] md:max-w-[500px] dark:text-white dark:decoration-white"
+                    class="primary-text text-lg line-through"
                   >
                     خرید میوه و سبزیجات و لبنیات برای خانه
                   </span>
@@ -393,7 +392,7 @@
                   </div>
 
                   <span
-                    class="text-[#323233] text-lg font-medium line-through secondary-text select-none max-w-[290px] md:max-w-[500px] dark:text-white dark:decoration-white"
+                    class="primary-text text-lg line-through"
                   >
                     تماس با مبل فروشی در مورد تاخیر در ارسال
                   </span>
@@ -422,7 +421,7 @@
                   </div>
 
                   <span
-                    class="text-[#323233] text-lg font-medium line-through secondary-text select-none max-w-[290px] md:max-w-[500px] dark:text-white dark:decoration-white"
+                    class="primary-text text-lg line-through"
                   >
                     جلسه با مرتضی در مورد مصاحبه با کارآموز ادمین پنل
                   </span>

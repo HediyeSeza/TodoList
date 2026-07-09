@@ -13,6 +13,8 @@
   --border-soft:#F5F6F8;
   --border-dashed:#CCCCCC;
 
+  --divider:#E5E7EB;
+
   --primary:#007BFF;
 }
 
@@ -30,6 +32,8 @@
   --border:#203E62;
   --border-soft:#2F3132;
   --border-dashed:#203E62;
+
+  --divider:#243042;
 
   --primary:#007BFF;
 }
