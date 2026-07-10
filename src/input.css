@@ -26,7 +26,8 @@
 }
 
 .card-bg{
-    background: var(--bg-card);
+    background:var(--bg-card);
+    border:1px solid var(--border-soft);
 }
 
 .active-bg{
@@ -69,7 +70,7 @@
 }
 .theme-switch{
     background:var(--bg-theme-container);
-    border-radius:16px;
+    border-radius:12px;
     padding:6px;
 }
 
@@ -78,8 +79,8 @@
 }
 
 .theme-btn.active{
-    background:var(--bg-theme-active);
-        color:var(--text-primary);
+    background: var(--bg-theme-active);
+    color: var(--text-primary);
 }
 
 .theme-btn{
@@ -88,14 +89,11 @@
     align-items:center;
     justify-content:center;
     gap:8px;
-    height:56px;
-    border-radius:12px;
+    height: 36px;
+    border-radius:8px;
     transition:.3s;
+    color:var(--text-secondary);
 }
-
-.dark .theme-btn-active{
-    background:#002247;
-}  
 .primary-color{
     color:var(--primary);
 }
