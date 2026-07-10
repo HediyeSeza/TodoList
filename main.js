@@ -6,12 +6,12 @@ import { initModal } from "./src/components/modal.js";
 import { initStorage } from "./src/utils/storage.js";
 
 function initApp() {
-initStorage();
+  initStorage();
 
-//   initSidebar();
-//   initHeader();
-initTasks();
-initModal();
+  //   initSidebar();
+  //   initHeader();
+  initTasks();
+  initModal();
 }
 
 initApp();
