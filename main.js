@@ -13,13 +13,12 @@ function initApp() {
   initTasks();
   initModal();
 }
+// Pedram was here
 
 initApp();
 
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
-
-
 
 function setTheme(theme) {
   if (theme === "dark") {
@@ -78,15 +77,13 @@ const menuBtn = document.getElementById("menu-btn");
 const closeBtn = document.getElementById("close-btn");
 const sidebar = document.getElementById("sidebar");
 
-
-  function openSidebar() {
+function openSidebar() {
   sidebar.classList.remove("translate-x-full");
   overlay.classList.remove("hidden");
 }
-  
 
 function closeSidebar() {
-sidebar.classList.add("translate-x-full");
+  sidebar.classList.add("translate-x-full");
   overlay.classList.add("hidden");
 }
 
