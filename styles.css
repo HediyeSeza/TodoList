@@ -27,6 +27,11 @@ body {
   min-height: 100%;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
 body {
   font-family: sans-serif;
   background: var(--bg-main);

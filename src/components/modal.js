@@ -141,6 +141,13 @@ export function initModal() {
     }
   }
 
+  if (cancelTaskBtn) {
+    cancelTaskBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeForm();
+    });
+  }
+
   const openEditForm = (taskId, taskCard = null) => {
     resetFormMode();
 

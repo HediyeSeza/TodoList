@@ -7,9 +7,9 @@
 
     <link href="/src/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
+    <link href="/src/output.css" rel="stylesheet">
     <link rel="stylesheet" href="./src/styles/variables.css" />
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
   <body>
@@ -302,15 +302,13 @@
             </div>
           </div>
         </div>
-        <div
-          class="w-[85%] border-t border-[#F5F6F8] mx-auto md:hidden dark:hidden"
-        ></div>
+          <div class="border-t soft-border">
 
         <!-------- Task Columns---- -->
         <section class="task-board">
           <div class="flex flex-col gap-8">
             <div>
-              <div class="!mr-15 md:!mr-60 md:pt-10">
+              <div class="w-full max-w-[744px] mx-auto md:pt-10">
                 <h2
                   class="primary-text text-lg font-extrabold md:text-xl md:font-extrabold py-1"
                 >
@@ -318,7 +316,7 @@
                 </h2>
                 <p
                   id="active-tasks-status"
-                  class="muted-text text-xs font-normal md:text-[14px] md:font-extrabold md:w-[744px] secondary-text"
+                  class="muted-text text-xs font-normal md:text-[14px] md:font-extrabold secondary-text"
                 >
                   تسکی برای امروز نداری!
                 </p>
@@ -327,7 +325,7 @@
             <div class="flex flex-col items-center w-full mb-8 gap-4">
               <div
                 id="show-form-btn"
-                class="flex items-center gap-2 border-2 border-dashed dark:bg-[#091120] border-[#CCCCCC] dark:border-[#203E62] rounded-[10px] h-[56px] w-[328px] md:w-[744px] md:h-[57px] cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-[#112038] hover:border-[#007BFF] group"
+                class="flex items-center gap-2 border-2 border-dashed dark:bg-[#091120] border-[#CCCCCC] dark:border-[#203E62] rounded-[10px] h-[56px] w-full max-w-[744px] mx-auto md:h-[57px] cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-[#112038] hover:border-[#007BFF] group"
               >
                 <img
                   src="./assets/icons/Light/add.svg"
@@ -335,15 +333,15 @@
                   class="transition-transform duration-200 group-hover:scale-110"
                 />
                 <p
-                  class="text-[#007BFF] font-semibold text-[14px] md:text-[16px] md:font-bold"
+                  class="primary-color font-semibold"
                 >
-                  افزودن وظیقه جدید
+                  افزودن وظیفه جدید
                 </p>
               </div>
 
               <div
                 id="inline-task-form"
-                class="hidden flex-col w-[328px] md:w-[744px] border border-[#E9E9E9] rounded-[10px] p-4 shadow-sm mt-2"
+                class="hidden flex-col w-full max-w-[744px] mx-auto border border-[#E9E9E9] rounded-[10px] p-4 shadow-sm mt-2"
               >
                 <input
                   type="text"
@@ -408,6 +406,7 @@
                   <button
                     id="remove-priority-btn"
                     class="hover:opacity-70 flex items-center justify-center cursor-pointer"
+                    type="button"
                   >
                     <img
                       src="./assets/icons/Light/close-circle.svg"
@@ -418,7 +417,18 @@
                   <span id="selected-text"></span>
                 </div>
                 <hr class="border-[#E9E9E9] my-4" />
-                <div class="flex justify-end">
+                <div class="flex items-center justify-end gap-1.5">
+                  <button
+                    id="cancel-task-btn"
+                    class="flex items-center justify-center gap-3 p-1.5 h-[34px] bg-[#F5F5F5] text-[#9E9E9E] rounded-[6px] text-sm font-semibold transition-all duration-300 hover:bg-[#E2E6EE] md:hidden"
+                    type="button"
+                  >
+                    <img
+                      src="./assets/icons/Light/close-circle.svg"
+                      alt="close"
+                      class="w-5.5 h-5.5"
+                    />
+                  </button>
                   <button
                     id="add-task-btn"
                     class="px-4 py-1.5 w-[136px] h-[34px] bg-[#007BFF] opacity-60 text-white rounded-[6px] text-sm font-semibold transition-all duration-300 hover:bg-[#2d3e55] hover:text-white"
@@ -438,7 +448,7 @@
             <img
               src="./assets/images/2143202_Artboard 1.png"
               alt=""
-              class="opacity-50 dark:opacity-70"
+              class="opacity:1 dark:opacity-70"
             />
             <div class="gap-1 flex flex-col items-center">
               <p class="font-extrabold text-[16px] caption-text">
@@ -451,35 +461,24 @@
               </p>
             </div>
           </div>
-          <div class="h-16"></div>
+          <div class="h-1"></div>
           <!-- uncomment these aswell -->
 
           <div id="todo" class="column"></div>
           <div id="in-progress" class="column"></div>
           <div id="done" class="column flex flex-col gap-4 py-4">
-            <div class="gap-1 md:hidden">
-              <h4 class="primary-text text-[16px] font-extrabold">
+            <div class="w-full max-w-[744px] mx-auto md:pt-10">
+              <h2
+                class="primary-text text-lg font-extrabold md:text-xl md:font-extrabold py-1"
+              >
                 تسک های انجام شده
-              </h4>
-              <p class="completed-tasks-status text-xs font-normal muted-text">
+              </h2>
+              <p
+                id="completed-tasks-status"
+                class="completed-tasks-status muted-text text-xs font-normal md:text-[14px] md:font-extrabold secondary-text"
+              >
                 تسک را باید انجام دهید.
               </p>
-            </div>
-            <div class="hidden md:block md:flex md:justify-between">
-              <div></div>
-              <div class="gap-1 hidden md:block">
-                <h4 class="primary-text text-[16px] font-extrabold">
-                  تسک های انجام شده
-                </h4>
-                <p
-                  class="completed-tasks-status text-xs font-normal muted-text"
-                >
-                  تسک را باید انجام دهید.
-                </p>
-              </div>
-              <div></div>
-              <div></div>
-              <div></div>
             </div>
             <div
               id="completed-tasks-list"
