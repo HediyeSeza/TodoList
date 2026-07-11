@@ -14,6 +14,7 @@
 
   <body>
     <div id="app">
+      
       <!-- Sidebar -->
       <div
         id="overlay"
@@ -270,6 +271,17 @@
             class="card-bg flex justify-center w-full h-12 rounded-lg top-4 left-4 drop-shadow-lg items-center"
           >
             <div class="flex justify-between w-[95%]">
+              <img
+                src="./assets/icons/Light/menu.svg"
+                alt=""
+                class="size-6 dark:hidden"
+              />
+              <img
+                src="./assets/icons/Dark/menu.svg"
+                alt=""
+                class="size-6 hidden dark:block"
+              />
+              <h1 class="font-bold text-md primary-text">کوئرا لیست</h1>
               <button
                 id="menu-btn"
                 class="md:hidden flex items-center justify-center"
@@ -302,9 +314,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="w-[85%] border-t border-[#F5F6F8] mx-auto md:hidden dark:hidden"
-        ></div>
+          <div class="border-t soft-border md:hidden"></div>
 
         <!-------- Task Columns---- -->
         <section class="task-board">
