@@ -43,9 +43,7 @@ function getPriorityStyles() {
 const tasksContainer = document.getElementById("active-tasks-list");
 const completedTasksContainer = document.getElementById("completed-tasks-list");
 const activeTasksStatus = document.getElementById("active-tasks-status");
-const completedTasksStatusEls = document.querySelectorAll(
-  ".completed-tasks-status",
-);
+const completedTasksStatusEls = document.querySelectorAll(".completed-tasks-status");
 
 function updateActiveTasksStatus(count) {
   if (!activeTasksStatus) return;
@@ -92,43 +90,43 @@ function renderTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-start w-full max-w-[744px] mx-auto min-h-[105px] rounded-[12px] pl-[88px] pr-[18px] pt-[20px] pb-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
+      "task-card card-bg relative flex items-center justify-between w-[328px] md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
-      <div class="absolute right-0 top-3 bottom-3 w-1 ${style.barClass} rounded-l-[8px] shrink-0"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-1 ${style.barClass} shrink-0"></div>
 
-      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-4 top-4 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
+      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-3 top-3 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
         <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
       </button>
 
       <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
         <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-6 h-6" />
+          <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
         </button>
         <div class="w-px h-5 bg-[#EBEDEF]"></div>
       <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-6 h-6" />
+          <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-4 h-4" />
         </button>
       </div>
 
-      <div class="flex items-start gap-3 pt-1 pr-2 h-full w-full">
-        <div class="flex items-start justify-center shrink-0 mt-0">
-          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 border rounded-[5px] border-[#CCCCCC] text-blue-500 focus:ring-blue-500 cursor-pointer">
+      <div class="flex items-start gap-4 py-3 pr-4 h-full w-full">
+        <div class="flex items-center justify-center shrink-0 mt-1">
+          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500 cursor-pointer">
         </div>
 
-        <div class="flex flex-col gap-2 w-full">
-          <div class="flex flex-col items-start gap-2 min-w-0 max-w-full md:flex-row md:items-center md:gap-3">
-            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white break-words whitespace-normal">
+        <div class="flex flex-col gap-1.5 w-full">
+          <div class="flex items-center gap-2 min-w-0 max-w-full">
+            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-clamp-1 truncate">
               ${task.title}
             </span>
 
-            <span class="inline-flex max-w-max self-start md:self-center px-[8px] py-[2px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0 whitespace-nowrap">
+            <span class="px-[8px] py-[2px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
               ${style.label}
             </span>
           </div>
 
-          ${task.desc ? `<p class="text-[14px] text-gray-500 dark:text-gray-400 break-words whitespace-normal">${task.desc}</p>` : ""}
+          ${task.desc ? `<p class="text-[14px] text-gray-500 dark:text-gray-400 line-clamp-2">${task.desc}</p>` : ""}
         </div>
       </div>
     `;
@@ -166,31 +164,17 @@ function renderCompletedTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-start w-full max-w-[744px] mx-auto min-h-[105px] rounded-[12px] pl-[88px] pr-[18px] pt-[20px] pb-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden opacity-90";
+      "task-card card-bg relative flex items-center justify-between w-[328px] md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden opacity-90";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
-      <div class="absolute right-0 top-4 bottom-4 w-1 ${style.barClass} rounded-l-[8px] shrink-0"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-1 ${style.barClass} shrink-0"></div>
 
-      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-4 top-8 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
-        <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
-      </button>
-
-      <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
-        <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-6 h-6" />
-        </button>
-        <div class="w-px h-5 bg-[#EBEDEF]"></div>
-        <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-6 h-6" />
-        </button>
-      </div>
-
-      <div class="flex items-start gap-4 py-3 pr-2 h-full w-full ">
-        <div class="flex items-start justify-center shrink-0 mt-0">
+      <div class="flex items-start gap-4 py-3 pr-4 h-full w-full">
+        <div class="flex items-center justify-center shrink-0 mt-1">
           <label class="flex items-center justify-center cursor-pointer">
             <input type="checkbox" data-id="${task.id}" checked class="task-checkbox sr-only">
-            <img src="./assets/icons/Light/tick-square.svg" alt="completed" class="w-6 h-6" />
+            <img src="./assets/icons/Light/tick-square.svg" alt="completed" class="w-5 h-5" />
           </label>
         </div>
 
@@ -199,8 +183,29 @@ function renderCompletedTasks() {
             <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-clamp-1 truncate line-through">
               ${task.title}
             </span>
+
+            <span class="px-[8px] py-[2px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
+              ${style.label}
+            </span>
           </div>
         </div>
+      </div>
+
+      <div class="relative shrink-0 ml-2">
+        <button type="button" data-id="${task.id}" class="task-menu-btn p-2 cursor-pointer rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
+          <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
+        </button>
+
+        <div class="task-menu hidden w-[78px] h-[34px] absolute left-3 top-8 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
+        <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
+          <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
+        </button>
+        <div class="w-px h-5 bg-[#EBEDEF]"></div>
+      <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
+          <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-4 h-4" />
+        </button>
+        
+      </div>
       </div>
     `;
 
@@ -261,8 +266,7 @@ function setupCheckboxListeners() {
       e.stopImmediatePropagation();
       e.stopPropagation();
       const taskId = Number(editButton.dataset.id);
-      const taskCard =
-        editButton.closest(".task-card") || editButton.closest(".card-bg");
+      const taskCard = editButton.closest(".task-card") || editButton.closest(".card-bg");
       if (window.openTaskFormById) {
         window.openTaskFormById(taskId, taskCard);
       }
