@@ -53,3 +53,28 @@ function updateCurrentDate() {
 }
 
 updateCurrentDate();
+
+//منو//
+
+const menuBtn = document.getElementById("menu-btn");
+const closeBtn = document.getElementById("close-btn");
+const sidebar = document.getElementById("sidebar");
+
+
+  function openSidebar() {
+  sidebar.classList.remove("translate-x-full");
+  overlay.classList.remove("hidden");
+}
+  
+
+function closeSidebar() {
+sidebar.classList.add("translate-x-full");
+  overlay.classList.add("hidden");
+}
+
+menuBtn.addEventListener("click", openSidebar);
+
+closeBtn.addEventListener("click", closeSidebar);
+
+const overlay = document.getElementById("overlay");
+overlay.addEventListener("click", closeSidebar);
