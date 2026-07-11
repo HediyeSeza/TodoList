@@ -1,6 +1,8 @@
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
 
+
+
 function setTheme(theme) {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");

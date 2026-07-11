@@ -1,3 +1,4 @@
+@custom-variant dark (&:where(.dark, .dark *));
 
 * {
   box-sizing: border-box;
@@ -19,6 +20,7 @@
   font-weight: 700;
   font-style: normal;
 }
+/* debug */
 
 html,
 body {
@@ -30,8 +32,8 @@ body {
   background: var(--bg-main);
   color: var(--text-primary);
   transition:
-    background-color .3s ease,
-    color .3s ease;
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #app {
@@ -41,13 +43,13 @@ body {
 
 #sidebar {
   width: 260px;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 #main {
   flex: 1;
   padding: 20px;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .tasks-wrapper {
@@ -61,7 +63,90 @@ body {
   border-radius: 12px;
   padding: 12px;
   transition:
-    background-color .3s ease,
-    border-color .3s ease;
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
+.sidebar {
+  background: var(--bg-sidebar);
+}
+
+.card {
+  background: var(--bg-card);
+  transition: background-color 0.3s ease;
+}
+
+.text {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+.main-bg {
+  background: var(--bg-main);
+}
+
+.sidebar-bg {
+  background: var(--bg-sidebar);
+}
+
+.card-bg {
+  background: var(--bg-card);
+}
+
+.active-bg {
+  background: var(--bg-active);
+}
+
+.primary-text {
+  color: var(--text-primary);
+}
+
+.secondary-text {
+  color: var(--text-secondary);
+}
+
+.muted-text {
+  color: var(--text-muted);
+}
+
+.caption-text {
+  color: var(--text-caption);
+}
+
+.border-color {
+  border-color: var(--border);
+}
+
+.soft-border {
+  border-color: var(--border-soft);
+}
+
+.dashed-border {
+  border-color: var(--border-dashed);
+}
+.light-text {
+  color: #afaeb2;
+}
+
+.dark .light-text {
+  color: #52555b;
+}
+.theme-switch {
+  background: var(--bg-active);
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.theme-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.theme-btn.active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+.dark .theme-btn-active {
+  background: #002247;
+}
