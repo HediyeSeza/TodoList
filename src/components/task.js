@@ -74,12 +74,27 @@ export function initTasks() {
   setupCheckboxListeners();
 }
 
+function getPriorityRank(priority) {
+  switch (priority) {
+    case "high":
+      return 0;
+    case "medium":
+      return 1;
+    case "low":
+      return 2;
+    default:
+      return 3;
+  }
+}
+
 function renderTasks() {
   if (!tasksContainer) return;
 
   // getting data from our local storage
   const allTasks = getTasks();
-  const activeTasks = allTasks.filter((task) => task.isCompleted === false);
+  const activeTasks = allTasks
+    .filter((task) => task.isCompleted === false)
+    .sort((a, b) => getPriorityRank(a.priority) - getPriorityRank(b.priority));
 
   // empty the container
   tasksContainer.innerHTML = "";
