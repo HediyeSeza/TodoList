@@ -18,12 +18,11 @@ export function checkEmptyState() {
 
 function getPriorityStyles() {
   return {
-    high: {
-      label: "بالا",
-      barClass: "bg-[#FF5F37]",
-      tagBg: "bg-[#FFE2DB]",
-      tagText: "text-[#FF5F37]",
-    },
+    high:{
+   label:"بالا",
+   class:"priority-high",
+   barClass:"bar-high"
+},
     medium: {
       label: "متوسط",
       barClass: "bg-[#FFAF37]",
@@ -92,7 +91,7 @@ function renderTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
+      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-hidden";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
@@ -102,7 +101,7 @@ function renderTasks() {
         <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
       </button>
 
-      <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
+      <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
         <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
           <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
         </button>
@@ -166,7 +165,7 @@ function renderCompletedTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden opacity-90";
+      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-hidden opacity-90";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
@@ -198,7 +197,7 @@ function renderCompletedTasks() {
           <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
         </button>
 
-        <div class="task-menu hidden w-[78px] h-[34px] absolute left-3 top-8 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
+        <div class="task-menu hidden w-[78px] h-[34px] absolute left-3 top-8 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
         <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
           <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
         </button>
