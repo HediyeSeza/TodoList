@@ -43,7 +43,9 @@ function getPriorityStyles() {
 const tasksContainer = document.getElementById("active-tasks-list");
 const completedTasksContainer = document.getElementById("completed-tasks-list");
 const activeTasksStatus = document.getElementById("active-tasks-status");
-const completedTasksStatusEls = document.querySelectorAll(".completed-tasks-status");
+const completedTasksStatusEls = document.querySelectorAll(
+  ".completed-tasks-status",
+);
 
 function updateActiveTasksStatus(count) {
   if (!activeTasksStatus) return;
@@ -266,7 +268,8 @@ function setupCheckboxListeners() {
       e.stopImmediatePropagation();
       e.stopPropagation();
       const taskId = Number(editButton.dataset.id);
-      const taskCard = editButton.closest(".task-card") || editButton.closest(".card-bg");
+      const taskCard =
+        editButton.closest(".task-card") || editButton.closest(".card-bg");
       if (window.openTaskFormById) {
         window.openTaskFormById(taskId, taskCard);
       }

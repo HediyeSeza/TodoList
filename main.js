@@ -1,7 +1,25 @@
+// import { initSidebar } from "./src/components/sidebar.js";
+// import { initHeader } from "./src/components/header.js";
+import { initTasks } from "./src/components/task.js";
+import { initModal } from "./src/components/modal.js";
+
+import { initStorage } from "./src/utils/storage.js";
+
+function initApp() {
+  initStorage();
+
+  //   initSidebar();
+  //   initHeader();
+  initTasks();
+  initModal();
+}
+
+initApp();
+
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
 
-
+// debug
 
 function setTheme(theme) {
   if (theme === "dark") {
@@ -38,8 +56,6 @@ function updateCurrentDate() {
 
   const parts = formatter.formatToParts(today);
 
-  // debug
-
   const weekday = parts.find((p) => p.type === "weekday")?.value;
   const day = parts.find((p) => p.type === "day")?.value;
   const month = parts.find((p) => p.type === "month")?.value;
@@ -56,27 +72,23 @@ function updateCurrentDate() {
 
 updateCurrentDate();
 
-//منو//
+// =================== Sidebar ===================
 
 const menuBtn = document.getElementById("menu-btn");
 const closeBtn = document.getElementById("close-btn");
 const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
-
-  function openSidebar() {
+function openSidebar() {
   sidebar.classList.remove("translate-x-full");
   overlay.classList.remove("hidden");
 }
-  
 
 function closeSidebar() {
-sidebar.classList.add("translate-x-full");
+  sidebar.classList.add("translate-x-full");
   overlay.classList.add("hidden");
 }
 
 menuBtn.addEventListener("click", openSidebar);
-
 closeBtn.addEventListener("click", closeSidebar);
-
-const overlay = document.getElementById("overlay");
 overlay.addEventListener("click", closeSidebar);
