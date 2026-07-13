@@ -1,5 +1,3 @@
-// import { initSidebar } from "./src/components/sidebar.js";
-// import { initHeader } from "./src/components/header.js";
 import { initTasks } from "./src/components/task.js";
 import { initModal } from "./src/components/modal.js";
 
@@ -7,9 +5,6 @@ import { initStorage } from "./src/utils/storage.js";
 
 function initApp() {
   initStorage();
-
-  //   initSidebar();
-  //   initHeader();
   initTasks();
   initModal();
 }
@@ -19,7 +14,6 @@ initApp();
 const lightBtn = document.getElementById("light-btn");
 const darkBtn = document.getElementById("dark-btn");
 
-// debug
 
 function setTheme(theme) {
   if (theme === "dark") {
@@ -81,10 +75,12 @@ const overlay = document.getElementById("overlay");
 
 function openSidebar() {
   sidebar.classList.remove("translate-x-full");
+  sidebar.classList.add("translate-x-0");
   overlay.classList.remove("hidden");
 }
 
 function closeSidebar() {
+  sidebar.classList.remove("translate-x-0");
   sidebar.classList.add("translate-x-full");
   overlay.classList.add("hidden");
 }

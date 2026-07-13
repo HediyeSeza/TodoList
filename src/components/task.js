@@ -92,13 +92,13 @@ function renderTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-[328px] md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
+      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
       <div class="absolute right-0 top-0 bottom-0 w-1 ${style.barClass} shrink-0"></div>
 
-      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-3 top-3 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
+      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-3 top-4 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
         <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
       </button>
 
@@ -166,7 +166,7 @@ function renderCompletedTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-[328px] md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden opacity-90";
+      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden opacity-90";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `

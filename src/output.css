@@ -1089,6 +1089,14 @@
       background-color: #091120;
     }
   }
+  .theme-text{
+    color: var( --text-muted);
+    transition: .3s;
+}
+
+.theme-btn.active .theme-text{
+    color: var(--text-primary);
+}
   .dark\:text-\[\#52555B\] {
     &:where(.dark, .dark *) {
       color: #52555B;
@@ -1144,6 +1152,7 @@
 @layer utilities;
 .sidebar {
   background: var(--bg-sidebar);
+  
 }
 .card {
   background: var(--bg-card);
@@ -1155,9 +1164,11 @@
 }
 .main-bg {
   background: var(--bg-main);
+  margin-right:0;
 }
 .sidebar-bg {
   background: var(--bg-sidebar);
+  border-radius:20px;
 }
 .card-bg {
   background: var(--bg-card);

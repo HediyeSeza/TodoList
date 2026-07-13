@@ -13,6 +13,9 @@
   --border-soft: #f5f6f8;
   --border-dashed: #cccccc;
 
+  --bg-theme-container:#F7F7F7;
+  --bg-theme-active:#FFFFFF;
+
   --primary: #007bff;
 }
 
@@ -20,7 +23,7 @@
   --bg-main: #060c18;
   --bg-card: #091120;
   --bg-sidebar: #091120;
-  --bg-active: #041933;
+  --bg-active: #002247;
 
   --text-primary: #ffffff;
   --text-secondary: #afaeb2;
@@ -31,6 +34,9 @@
   --border-soft: #2f3132;
   --border-dashed: #203e62;
 
+  --bg-theme-container:#0C1B31;
+  --bg-theme-active:#002247;
+
   --primary: #007bff;
 }
-/* debug */
+
