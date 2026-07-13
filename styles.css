@@ -46,23 +46,3 @@ body {
     background-color .3s ease,
     border-color .3s ease;
 }
-.priority-high{
-    color:var(--priority-high);
-    background:var(--priority-high-bg);
-}
-
-.priority-medium{
-    color:var(--priority-medium);
-    background:var(--priority-medium-bg);
-}
-
-.priority-low{
-    color:var(--priority-low);
-    background:var(--priority-low-bg);
-}
-.hover-primary:hover{
-    border-color: var(--primary);
-}
-.btn-primary{
-    background: var(--primary);
-}
