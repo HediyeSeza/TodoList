@@ -113,7 +113,7 @@ function renderTasks() {
       </div>
 
       <div class="flex items-center gap-4 py-1 pr-4 w-full">
-        <div class="flex items-start justify-center shrink-0 -mt-6">
+        <div class="flex items-start justify-center shrink-0 mt-1px">
           <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500 cursor-pointer">
         </div>
 
