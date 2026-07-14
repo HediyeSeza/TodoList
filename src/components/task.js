@@ -21,20 +21,20 @@ function getPriorityStyles() {
     high: {
       label: "بالا",
       barClass: "bg-[#FF5F37]",
-      tagBg: "bg-[#FFE2DB]",
-      tagText: "text-[#FF5F37]",
+      tagBg: "priority-high",
+      tagText: "",
     },
     medium: {
       label: "متوسط",
       barClass: "bg-[#FFAF37]",
-      tagBg: "bg-[#FFEFD6]",
-      tagText: "text-[#FFAF37]",
+      tagBg: "priority-medium",
+      tagText: "",
     },
     low: {
       label: "پایین",
       barClass: "bg-[#11A483]",
-      tagBg: "bg-[#C3FFF1]",
-      tagText: "text-[#11A483]",
+      tagBg: "priority-low",
+      tagText: "",
     },
   };
 }
@@ -43,7 +43,9 @@ function getPriorityStyles() {
 const tasksContainer = document.getElementById("active-tasks-list");
 const completedTasksContainer = document.getElementById("completed-tasks-list");
 const activeTasksStatus = document.getElementById("active-tasks-status");
-const completedTasksStatusEls = document.querySelectorAll(".completed-tasks-status");
+const completedTasksStatusEls = document.querySelectorAll(
+  ".completed-tasks-status",
+);
 
 function updateActiveTasksStatus(count) {
   if (!activeTasksStatus) return;
@@ -90,17 +92,17 @@ function renderTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-[328px] md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden";
+      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[80px] rounded-[12px] px-[20px] py-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-hidden";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
-      <div class="absolute right-0 top-0 bottom-0 w-1 ${style.barClass} shrink-0"></div>
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[54px] w-1 rounded-l-full ${style.barClass}"></div>
 
-      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-3 top-3 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
-        <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
+      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-3 top-4 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
+        <img src="./assets/icons/Dark/dots.svg" alt="options" class="w-5 h-5" />
       </button>
 
-      <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
+      <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
         <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
           <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
         </button>
@@ -110,18 +112,18 @@ function renderTasks() {
         </button>
       </div>
 
-      <div class="flex items-start gap-4 py-3 pr-4 h-full w-full">
-        <div class="flex items-center justify-center shrink-0 mt-1">
-          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500 cursor-pointer">
+      <div class="flex items-center gap-4 py-1 pr-4 w-full">
+        <div class="flex items-start justify-center shrink-0 mt-1px">
+          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 primary focus:primary cursor-pointer">
         </div>
 
-        <div class="flex flex-col gap-1.5 w-full">
+        <div class="flex flex-col gap-0.5 w-full">
           <div class="flex items-center gap-2 min-w-0 max-w-full">
             <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-clamp-1 truncate">
               ${task.title}
             </span>
 
-            <span class="px-[8px] py-[2px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
+            <span class="px-[4px] py-[1px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
               ${style.label}
             </span>
           </div>
@@ -164,13 +166,13 @@ function renderCompletedTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-[328px] md:w-[744px] max-w-full mx-auto min-h-[105px] rounded-[12px] px-[20px] py-[24px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-[#091120] overflow-hidden opacity-90";
+      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[80px] rounded-[12px] px-[20px] py-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-hidden opacity-90";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
-      <div class="absolute right-0 top-0 bottom-0 w-1 ${style.barClass} shrink-0"></div>
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[54px] w-1 rounded-l-full ${style.barClass}"></div>
 
-      <div class="flex items-start gap-4 py-3 pr-4 h-full w-full">
+      <div class="flex items-start gap-4 py-1 pr-4 w-full">
         <div class="flex items-center justify-center shrink-0 mt-1">
           <label class="flex items-center justify-center cursor-pointer">
             <input type="checkbox" data-id="${task.id}" checked class="task-checkbox sr-only">
@@ -178,13 +180,13 @@ function renderCompletedTasks() {
           </label>
         </div>
 
-        <div class="flex flex-col gap-1.5 w-full">
+        <div class="flex flex-col gap-0.5 w-full">
           <div class="flex items-center gap-2 min-w-0 max-w-full">
             <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-clamp-1 truncate line-through">
               ${task.title}
             </span>
 
-            <span class="px-[8px] py-[2px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
+            <span class="px-[4px] py-[1px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
               ${style.label}
             </span>
           </div>
@@ -196,7 +198,7 @@ function renderCompletedTasks() {
           <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
         </button>
 
-        <div class="task-menu hidden w-[78px] h-[34px] absolute left-3 top-8 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 dark:bg-[#091120]">
+        <div class="task-menu hidden w-[78px] h-[34px] absolute left-3 top-8 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
         <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
           <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
         </button>
@@ -266,7 +268,8 @@ function setupCheckboxListeners() {
       e.stopImmediatePropagation();
       e.stopPropagation();
       const taskId = Number(editButton.dataset.id);
-      const taskCard = editButton.closest(".task-card") || editButton.closest(".card-bg");
+      const taskCard =
+        editButton.closest(".task-card") || editButton.closest(".card-bg");
       if (window.openTaskFormById) {
         window.openTaskFormById(taskId, taskCard);
       }
