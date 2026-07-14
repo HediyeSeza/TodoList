@@ -18,10 +18,33 @@
         class="fixed inset-0 bg-black/40 hidden z-40 md:hidden"
       ></div>
       <aside
-        id="sidebar"
-        class="sidebar-bg fixed z-50 w-[280px] h-screen md:h-[calc(100vh-30px)] md:top-[15px] md:mr-4 md:rounded-xl transition-transform duration-300 md:translate-x-0 md:flex justify-between flex-col overflow-hidden drop-shadow-lg gap-2"
-      >
-        <div
+  id="sidebar"
+  class="
+    sidebar-bg
+    fixed
+    top-0
+    right-0
+    z-50
+    w-[280px]
+    h-screen
+    translate-x-full
+    transition-transform
+    duration-300
+
+    flex
+    flex-col
+    justify-between
+
+    md:translate-x-0
+    md:h-[calc(100vh-30px)]
+    md:top-[15px]
+    md:mr-4
+    md:rounded-xl
+
+    overflow-hidden
+    drop-shadow-lg
+">
+      <div
           class="md:hidden flex flex-row-reverse items-center justify-between px-6 py-5"
         >
           <button
@@ -46,7 +69,7 @@
         <!-- <div class="h-5"></div> -->
         <div class="flex flex-col gap-2 mb-5">
           <div
-            class="hidden md:flex gap-3 items-center w-[85%] justify-center mt-10"
+            class="hidden md:flex gap-3 items-center w-[85%] justify-center mt-6"
           >
             <img
               src="./assets/images/68ff308177dd64be56b77b645113191065f1ff7b.png"
@@ -174,7 +197,7 @@
           </div>
         </div>
 
-        <div class="flex justify-center flex-col items-center gap-6 mb-6">
+        <div class="flex justify-center flex-col items-center gap-6 pb-6">
           <div
             class="theme-switch flex flex-row gap-1 rounded-lg p-1 w-52 h-11 justify-around items-center ]"
           >
@@ -221,8 +244,8 @@
 
           <div class="w-[208px] border-t soft-border"></div>
 
-          <div class="w-[100%] ml-2">
-            <div class="flex gap-4 mr-8">
+          <div class="w-full px-8">
+            <div class="flex gap-4 ">
               <img
                 src="./assets/icons/Light/logout.svg"
                 alt=""
@@ -309,12 +332,12 @@
             <div class="flex flex-col items-center w-full mb-8 gap-4">
               <div
                 id="show-form-btn"
-                class="flex items-center gap-2 border-2 card-bg border-dashed dashed-border rounded-[10px] h-[56px] w-full max-w-[744px] mx-auto md:h-[57px] cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-[#112038] hover-primary group"
+                class="flex items-center gap-2 dashed-card rounded-[10px] h-[56px] w-full max-w-[744px] mx-auto md:h-[57px] cursor-pointer transition-all duration-200 hover:bg-gray-50 dark:hover:bg-[#112038] hover-primary group"
               >
                 <img
                   src="./assets/icons/Light/add.svg"
                   alt=""
-                  class="transition-transform duration-200 group-hover:scale-110"
+                  class="transition-transform duration-200 group-hover:scale-110 mr-8"
                 />
                 <p
                   class="primary-color font-semibold text-[14px] md:text-[16px] md:font-bold"
@@ -325,7 +348,7 @@
 
               <div
                 id="inline-task-form"
-                class="hidden flex-col w-full max-w-[744px] mx-auto border-dashed dashed-border border-color rounded-[10px] p-4 shadow-sm mt-2"
+                class="hidden flex-col w-full max-w-[744px] mx-auto border-color rounded-[10px] p-4 shadow-sm mt-2"
               >
                 <input
                   type="text"
@@ -336,15 +359,15 @@
                 <textarea
                   id="task-desc"
                   placeholder="توضیحات"
-                  class="w-full bg-transparent text-#AFAEB2 placeholder-[#AFAEB2] focus:outline-none resize-none text-[14px] mb-4"
+                  class="w-full bg-transparent secondary-text secondary-text focus:outline-none resize-none text-[14px] mb-4"
                 ></textarea>
 
                 <div class="flex items-center justify-between mt-2">
                   <div class="relative">
                     <button
-                      id="tags-dropdown-btn"
-                      class="flex items-center w-[74px] h-[30px] gap-1 border-dashed dashed-border rounded-md px-2 py-1 text-[14px] text-[#AFAEB2] transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
-                    >
+  id="tags-dropdown-btn"
+  class="tags-btn flex items-center w-[74px] h-[30px] gap-1 rounded-md px-2 py-1 text-[14px] secondary-text transition cursor-pointer duration-200"
+>
                       <img
                         id="tag-icon"
                         src="./assets/icons/Light/tag-right.svg"
@@ -355,26 +378,24 @@
                     </button>
 
                     <div id="tags-menu" class="hidden py-6">
-                      <div
-                        class="inline-flex border-color border p-[10px] rounded-lg w-[214px] h-[43px] items-center gap-4"
-                      >
+                      <div class="priority-container inline-flex p-[10px] rounded-lg w-[214px] h-[43px] items-center gap-4">
                         <button
                           data-priority="low"
-                          class="priority-option align-middle w-[43px] h-[23px] py-[2px] px-[8px] gap-[8px] bg-[#C3FFF1] text-[#11A483] rounded-[4px] text-[12px] font-bold transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                          class="priority-option align-middle w-[43px] h-[23px] py-[2px] px-[8px] gap-[8px] priority-low rounded-[4px] text-[12px] font-bold transition cursor-pointer duration-200"
                         >
                           پایین
                         </button>
                         <div class="w-px h-6 divider"></div>
                         <button
                           data-priority="medium"
-                          class="priority-option align-middle gap-[8px] px-[8px] py-[2px] w-[54px] h-[23px] bg-[#FFEFD6] text-[#FFAF37] rounded-[4px] text-[12px] font-semibold transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                          class="priority-option align-middle gap-[8px] px-[8px] py-[2px] w-[54px] h-[23px] priority-medium  rounded-[4px] text-[12px] font-semibold transition cursor-pointer duration-200"
                         >
                           متوسط
                         </button>
                         <div class="w-px h-6 divider"></div>
                         <button
                           data-priority="high"
-                          class="priority-option align-middle px-[8px] py-[2px] gap-[8px] bg-[#FFE2DB] text-[#FF5F37] rounded-[4px] font-semibold text-[12px] transition hover:bg-[#112038] cursor-pointer duration-200 dark:hover:bg-[#112038]"
+                          class="priority-option align-middle px-[8px] py-[2px] gap-[8px] priority-high rounded-[4px] font-semibold text-[12px] transition cursor-pointer duration-200 "
                         >
                           بالا
                         </button>
@@ -398,7 +419,8 @@
                       class="w-4 h-4"
                     />
                   </button>
-                  <span id="selected-text"></span>
+                  <span
+    id="selected-text"class="text-xs font-semibold">
                 </div>
                 <hr class="border-color my-4" />
                 <div class="flex items-center justify-end gap-1.5">
@@ -415,7 +437,7 @@
                   </button>
                   <button
                     id="add-task-btn"
-                    class="px-4 py-1.5 w-[136px] h-[34px] primary-color opacity-60 text-white rounded-[6px] text-sm font-semibold transition-all duration-300 hover:bg-[#2d3e55] hover:text-white"
+                    class="px-4 py-1.5 w-[136px] h-[34px] btn-primary opacity-60 text-white rounded-[6px] text-sm font-semibold transition-all duration-300 hover:bg-[#2d3e55] hover:text-white"
                   >
                     اضافه کردن تسک
                   </button>

@@ -31,6 +31,10 @@ body {
   padding: 20px;
   transition: background-color .3s ease;
 }
+#inline-task-form{
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
 
 .tasks-wrapper {
   display: grid;
