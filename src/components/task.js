@@ -114,7 +114,7 @@ function renderTasks() {
 
       <div class="flex items-center gap-4 py-1 pr-4 w-full">
         <div class="flex items-start justify-center shrink-0 mt-1px">
-          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 text-blue-500 focus:ring-blue-500 cursor-pointer">
+          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 primary focus:primary cursor-pointer">
         </div>
 
         <div class="flex flex-col gap-0.5 w-full">
@@ -172,7 +172,7 @@ function renderCompletedTasks() {
     taskElement.innerHTML = `
       <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[54px] w-1 rounded-l-full ${style.barClass}"></div>
 
-      <div class="flex items-center gap-4 py-1 pr-4 w-full">
+      <div class="flex items-start gap-4 py-1 pr-4 w-full">
         <div class="flex items-center justify-center shrink-0 mt-1">
           <label class="flex items-center justify-center cursor-pointer">
             <input type="checkbox" data-id="${task.id}" checked class="task-checkbox sr-only">
