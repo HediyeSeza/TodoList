@@ -223,7 +223,7 @@ function renderCompletedTasks() {
 
         <div class="flex flex-col gap-0 w-full text-right">
           <div class="flex flex-col md:flex-row md:items-start pt-1 items-start gap-1 md:gap-2 w-full">
-            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white truncate text-right">
+            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-through truncate text-right">
               ${task.title}
             </span>
 
