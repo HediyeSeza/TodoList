@@ -21,22 +21,41 @@ function getPriorityStyles() {
     high: {
       label: "بالا",
       barClass: "bg-[#FF5F37]",
-      tagBg: "priority-high",
-      tagText: "",
+      tagClasses:
+        "bg-[#FFE2DB] text-[#FF5F37] dark:bg-[#3D2327] dark:text-[#FF5F37]",
     },
     medium: {
       label: "متوسط",
       barClass: "bg-[#FFAF37]",
-      tagBg: "priority-medium",
-      tagText: "",
+      tagClasses:
+        "bg-[#FFEFD6] text-[#FFAF37] dark:bg-[#302F2D] dark:text-[#FFAF37]",
     },
     low: {
       label: "پایین",
       barClass: "bg-[#11A483]",
-      tagBg: "priority-low",
-      tagText: "",
+      tagClasses:
+        "bg-[#C3FFF1] text-[#11A483] dark:bg-[#233332] dark:text-[#11A483]",
     },
   };
+}
+
+function getPriorityWeight(priority) {
+  switch (priority) {
+    case "high":
+      return 0;
+    case "medium":
+      return 1;
+    case "low":
+      return 2;
+    default:
+      return 3;
+  }
+}
+
+function sortActiveTasks(tasks) {
+  return [...tasks].sort(
+    (a, b) => getPriorityWeight(a.priority) - getPriorityWeight(b.priority),
+  );
 }
 
 // main task container
@@ -79,7 +98,9 @@ function renderTasks() {
 
   // getting data from our local storage
   const allTasks = getTasks();
-  const activeTasks = allTasks.filter((task) => task.isCompleted === false);
+  const activeTasks = sortActiveTasks(
+    allTasks.filter((task) => task.isCompleted === false),
+  );
 
   // empty the container
   tasksContainer.innerHTML = "";
@@ -92,43 +113,61 @@ function renderTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[80px] rounded-[12px] px-[20px] py-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-hidden";
+      "task-card card-bg relative flex items-start justify-between w-full md:w-[744px] max-w-full mx-auto rounded-[12px] px-[20px] py-[12px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-visible";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
-      <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[54px] w-1 rounded-l-full ${style.barClass}"></div>
-
-      <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer absolute left-3 top-4 p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
-        <img src="./assets/icons/Dark/dots.svg" alt="options" class="w-5 h-5" />
-      </button>
-
-      <div class="task-menu hidden w-[78px] h-[34px] absolute left-6 top-14 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
-        <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
-        </button>
-        <div class="w-px h-5 bg-[#EBEDEF]"></div>
-      <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-4 h-4" />
-        </button>
+      <div class="absolute right-0 top-0 h-full w-1 flex flex-col py-3">
+        <div class="flex-1 rounded-l-full ${style.barClass}"></div>
       </div>
 
-      <div class="flex items-center gap-4 py-1 pr-4 w-full">
-        <div class="flex items-start justify-center shrink-0 mt-1px">
-          <input type="checkbox" data-id="${task.id}" class="task-checkbox w-5 h-5 rounded border-gray-300 primary focus:primary cursor-pointer">
+      <div class="absolute left-3 top-3">
+        <div class="relative inline-block">
+          <button type="button" data-id="${task.id}" class="task-menu-btn cursor-pointer p-2 rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
+            <img src="./assets/icons/Light/dots.svg" alt="options" class="block w-5 h-5 dark:hidden" />
+            <img src="./assets/icons/Dark/dots.svg" alt="options" class="hidden w-5 h-5 dark:block" />
+          </button>
+
+          <div class="task-menu border-10 hidden w-[78px] h-[34px] absolute top-7 mt-1 left-14 -translate-x-1/2 z-20 items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
+            <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
+              <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-6 h-6" />
+            </button>
+            <div class="w-px h-5 bg-[#EBEDEF]"></div>
+            <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
+              <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3 w-full py-3">
+        <div class="flex items-start justify-center shrink-0 mt-0 mr-3">
+          <label class="relative flex items-center cursor-pointer">
+            <input type="checkbox" data-id="${task.id}" class="sr-only peer task-checkbox">
+    
+            <div class="w-5 h-5 rounded-[5px] border border-[#B8B8B8] dark:border-[#CCCCCC] bg-white dark:bg-[#091120] flex items-center justify-center transition-colors duration-150">
+      
+              <svg class="w-3.5 h-3.5 text-white hidden peer-checked:block" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </div>
+           </label>
         </div>
 
-        <div class="flex flex-col gap-0.5 w-full">
-          <div class="flex items-center gap-2 min-w-0 max-w-full">
-            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-clamp-1 truncate">
+        <div class="flex flex-col gap-2 w-full text-right">
+          <div class="flex flex-col md:flex-row md:items-start items-start gap-1 md:gap-2 w-full">
+            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white truncate text-right">
               ${task.title}
             </span>
 
-            <span class="px-[4px] py-[1px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
+            <span class="inline-flex shrink-0 items-center justify-center rounded-[4px] px-[8px] py-[2px] text-[12px] font-semibold ${style.tagClasses} md:mt-0!">
               ${style.label}
             </span>
           </div>
 
-          ${task.desc ? `<p class="text-[14px] text-gray-500 dark:text-gray-400 line-clamp-2">${task.desc}</p>` : ""}
+          <p class="text-[14px] text-caption dark:text-gray-400 text-right break-words w-full">
+            ${task.desc || "توضیحی اضافه نشده است"}
+          </p>
         </div>
       </div>
     `;
@@ -166,47 +205,52 @@ function renderCompletedTasks() {
 
     const taskElement = document.createElement("div");
     taskElement.className =
-      "task-card card-bg relative flex items-center justify-between w-full md:w-[744px] max-w-full mx-auto min-h-[80px] rounded-[12px] px-[20px] py-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-hidden opacity-90";
+      "task-card card-bg relative flex items-start justify-between w-full md:w-[744px] max-w-full mx-auto rounded-[12px] px-[20px] py-[16px] mb-3 shadow-sm border border-gray-100 dark:border-gray-800 bg-white card-bg overflow-visible opacity-90";
     taskElement.dir = "rtl";
 
     taskElement.innerHTML = `
-      <div class="absolute right-0 top-1/2 -translate-y-1/2 h-[54px] w-1 rounded-l-full ${style.barClass}"></div>
+      <div class="absolute right-0 top-0 h-full w-1 flex flex-col py-3">
+        <div class="flex-1 rounded-l-full ${style.barClass}"></div>
+      </div>
 
-      <div class="flex items-start gap-4 py-1 pr-4 w-full">
-        <div class="flex items-center justify-center shrink-0 mt-1">
+      <div class="flex items-start gap-4 py-1 w-full mr-3">
+        <div class="flex items-start justify-center shrink-0 mt-1">
           <label class="flex items-center justify-center cursor-pointer">
             <input type="checkbox" data-id="${task.id}" checked class="task-checkbox sr-only">
-            <img src="./assets/icons/Light/tick-square.svg" alt="completed" class="w-5 h-5" />
+            <img src="./assets/icons/Light/tick-square.svg" alt="completed" class="w-6 h-6" />
           </label>
         </div>
 
-        <div class="flex flex-col gap-0.5 w-full">
-          <div class="flex items-center gap-2 min-w-0 max-w-full">
-            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white line-clamp-1 truncate line-through">
+        <div class="flex flex-col gap-0 w-full text-right">
+          <div class="flex flex-col md:flex-row md:items-start pt-1 items-start gap-1 md:gap-2 w-full">
+            <span class="min-w-0 text-[16px] font-bold text-gray-900 dark:text-white truncate text-right">
               ${task.title}
             </span>
 
-            <span class="px-[4px] py-[1px] rounded-[4px] text-[12px] font-semibold ${style.tagBg} ${style.tagText} shrink-0">
+            <span class="inline-flex shrink-0 items-center justify-center rounded-[4px] px-[6px] py-[2px] text-[12px] font-semibold ${style.tagClasses} md:mt-0!">
               ${style.label}
             </span>
           </div>
         </div>
       </div>
 
-      <div class="relative shrink-0 ml-2">
-        <button type="button" data-id="${task.id}" class="task-menu-btn p-2 cursor-pointer rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
-          <img src="./assets/icons/Light/dots.svg" alt="options" class="w-5 h-5" />
-        </button>
+      <div class="relative shrink-0 ml-2 right-3">
+        <div class="relative inline-block">
+          <button type="button" data-id="${task.id}" class="task-menu-btn p-2 cursor-pointer rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-none dark:hover:bg-[#112038] transition-colors">
+            <img src="./assets/icons/Light/dots.svg" alt="options" class="block w-5 h-5 dark:hidden" />
+            <img src="./assets/icons/Dark/dots.svg" alt="options" class="hidden w-5 h-5 dark:block" />
+          </button>
 
-        <div class="task-menu hidden w-[78px] h-[34px] absolute left-3 top-8 z-10 flex items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
-        <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-4 h-4" />
-        </button>
-        <div class="w-px h-5 bg-[#EBEDEF]"></div>
-      <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
-          <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-4 h-4" />
-        </button>
-        
+          <div class="task-menu hidden w-[78px] h-[34px] absolute top-7 mt-1 left-14 -translate-x-1/2 z-20 items-center justify-center gap-[10px] rounded-[8px] border border-gray-200 bg-white p-[5px] shadow-lg dark:border-gray-700 card-bg">
+            <button type="button" data-id="${task.id}" class="task-delete-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-red-500  focus:outline-none">
+              <img src="./assets/icons/Light/tabler_trash-x.svg" alt="delete" class="w-6 h-6" />
+            </button>
+            <div class="w-px h-5 bg-[#EBEDEF]"></div>
+            <button type="button" data-id="${task.id}" class="task-edit-btn cursor-pointer flex h-[24px] w-[24px] items-center justify-center rounded-full text-gray-700 dark:text-gray-200  focus:outline-none">
+              <img src="./assets/icons/Light/tabler_edit.svg" alt="edit" class="w-6 h-6" />
+            </button>
+          </div>
+        </div>
       </div>
       </div>
     `;
@@ -242,6 +286,7 @@ function setupCheckboxListeners() {
     document.querySelectorAll(".task-menu").forEach((menu) => {
       if (!menu.contains(e.target) && !e.target.closest(".task-menu-btn")) {
         menu.classList.add("hidden");
+        menu.classList.remove("flex");
       }
     });
 
@@ -251,6 +296,7 @@ function setupCheckboxListeners() {
       const menu = menuButton.nextElementSibling;
       if (menu && menu.classList.contains("task-menu")) {
         menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
       }
     }
 

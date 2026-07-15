@@ -42,8 +42,8 @@
   background: var(--bg-sidebar);
 }
 .dashed-card {
-    background: var(--bg-card);
-    border: 2px dashed var(--border-dashed);
+  background: var(--bg-card);
+  border: 2px dashed var(--border-dashed);
 }
 
 .card-bg {
@@ -121,41 +121,44 @@
 .divider {
   border-color: var(--divider);
 }
-.priority-high{
-    color:var(--priority-high);
-    background:var(--priority-high-bg);
+.priority-high {
+  color: var(--priority-high);
+  background: var(--priority-high-bg);
 }
 
-.priority-medium{
-    color:var(--priority-medium);
-    background:var(--priority-medium-bg);
+.priority-medium {
+  color: var(--priority-medium);
+  background: var(--priority-medium-bg);
 }
 
-.priority-low{
-    color:var(--priority-low);
-    background:var(--priority-low-bg);
+.priority-low {
+  color: var(--priority-low);
+  background: var(--priority-low-bg);
 }
-.dark .priority-low{
-    color: var(--priority-low);
-    color:var(--priority-low);
+.dark .priority-low {
+  color: #11a483;
+  background: var(--priority-low-bg-dark);
 }
-.hover-primary:hover{
-    border-color: var(--primary);
+.hover-primary:hover {
+  border-color: var(--primary);
 }
-.dark .priority-medium{
-    color: var(--priority-medium);
-    color:var(--priority-medium);
+.dark .priority-medium {
+  color: #ffaf37;
+  background: var(--priority-medium-bg-dark);
 }
-.btn-primary{
-    background: var(--primary);
+.btn-primary {
+  background: var(--primary);
 }
-.dark .priority-high{
-    color: var(--priority-high);
-    color:var(--priority-high);
+.dark .btn-primary {
+  background: var(--primary-dark-mode);
+}
+.dark .priority-high {
+  color: #ff5f37;
+  background: var(--priority-high-bg-dark);
 }
 
-.primary-color{
-    color: var(--primary);
+.primary-color {
+  color: var(--primary);
 }
 .priority-container {
   border: 1px solid var(--border);
@@ -164,7 +167,7 @@
 }
 
 .dark .priority-container {
-  background: #0B192D;
+  background: var(--priority-container-dark);
   border: 1px solid #293242;
 }
 
@@ -173,24 +176,24 @@
 }
 
 .tags-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    transition: .2s;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: 0.2s;
 }
 
-.tags-btn:hover{
-    background:var(--bg-active);
-    border-color:var(--border);
-    color:var(--text-secondary);
+.tags-btn:hover {
+  background: var(--bg-active);
+  border-color: var(--border);
+  color: var(--text-secondary);
 }
 
-.dark .tags-btn{
-    background:var(--bg-card);
-    border-color:var(--border);
-    color:var(--text-primary);
+.dark .tags-btn {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-primary);
 }
 
-.dark .tags-btn:hover{
-    background:#1A2942;
+.dark .tags-btn:hover {
+  background: #1a2942;
 }

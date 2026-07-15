@@ -29,6 +29,13 @@ export function initModal() {
 
   if (!showFormBtn || !inlineTaskForm) return;
 
+  if (cancelTaskBtn) {
+    cancelTaskBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      closeForm();
+    });
+  }
+
   const defaultFormParent = inlineTaskForm.parentElement;
   const defaultFormNextSibling = inlineTaskForm.nextElementSibling;
   let currentTaskCard = null;
@@ -75,17 +82,40 @@ export function initModal() {
 
   function setPriorityDisplay(type) {
     selectedPriority = type;
+    const isDark = document.documentElement.classList.contains("dark");
+    
     if (type === "high") {
+      if (isDark) {
+        selectedDisplay.style.backgroundColor = "var(--priority-high-bg-dark)";
+        selectedDisplay.style.color = "#FF5F37";
+      } else {
+        selectedDisplay.style.backgroundColor = "#FFE2DB";
+        selectedDisplay.style.color = "#FF5F37";
+      }
       selectedDisplay.className =
-        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#FFE2DB] text-[#FF5F37] rounded-[4px] font-semibold text-[12px] w-fit";
+        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] rounded-[4px] font-semibold text-[12px] w-fit";
       selectedText.innerText = "بالا";
     } else if (type === "medium") {
+      if (isDark) {
+        selectedDisplay.style.backgroundColor = "var(--priority-medium-bg-dark)";
+        selectedDisplay.style.color = "#FFAF37";
+      } else {
+        selectedDisplay.style.backgroundColor = "#FFEFD6";
+        selectedDisplay.style.color = "#FFAF37";
+      }
       selectedDisplay.className =
-        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#FFEFD6] text-[#FFAF37] rounded-[4px] font-semibold text-[12px] w-fit";
+        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] rounded-[4px] font-semibold text-[12px] w-fit";
       selectedText.innerText = "متوسط";
     } else if (type === "low") {
+      if (isDark) {
+        selectedDisplay.style.backgroundColor = "var(--priority-low-bg-dark)";
+        selectedDisplay.style.color = "#11A483";
+      } else {
+        selectedDisplay.style.backgroundColor = "#C3FFF1";
+        selectedDisplay.style.color = "#11A483";
+      }
       selectedDisplay.className =
-        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] bg-[#C3FFF1] text-[#11A483] rounded-[4px] font-semibold text-[12px] w-fit";
+        "flex items-center gap-[6px] px-[8px] py-[4px] h-[30px] rounded-[4px] font-semibold text-[12px] w-fit";
       selectedText.innerText = "پایین";
     }
     selectedDisplay.classList.remove("hidden");
