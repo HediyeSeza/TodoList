@@ -1,49 +1,58 @@
 :root {
-  /* Primary */
-  --primary: #2C7EF8;
-  --primary-hover: #075CD9;
-  --on-primary: #FFFFFF;
+  --bg-main: #fcfcfc;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-active: #f5faff;
 
-  /* Background */
-  --background: #FFFFFF;
-  --on-background: #191C1E;
-  --surface: #FFFFFF;
+  --text-primary: #242424;
+  --text-secondary: #525252;
+  --text-muted: #696969;
+  --text-caption: #7d7d7f;
 
-  /* Status */
-  --success: #90F677;
-  --error: #E63946;
+  --border: #e9e9e9;
+  --border-soft: #f5f6f8;
+  --border-dashed: #cccccc;
+  --divider: #ebedef;
 
-  /* Neutrals */
-  --black: #000000;
-  --gray-900: #323233;
-  --gray-700: #7D7D7F;
-  --gray-500: #AFAEB2;
-  --gray-400: #C8C7CB;
-  --gray-300: #E1E0E5;
-  --gray-100: #F5F6F8;
-  --gray-50: #FEFEFE;
-  --white: #FFFFFF;
+  --bg-theme-container: #f7f7f7;
+  --bg-theme-active: #ffffff;
+
+  --primary: #007bff;
+  --primary-dark-mode: #002247;
+
+  --priority-high: #ff5f37;
+  --priority-high-bg: #ffe2db;
+
+  --priority-medium: #ffaf37;
+  --priority-medium-bg: #ffefd6;
+
+  --priority-low: #11a483;
+  --priority-low-bg: #c3fff1;
 }
 
 .dark {
-  --primary: #3A86F8;
-  --primary-hover: #6BA4FA;
-  --on-primary: #FFFFFF;
+  --bg-main: #060c18;
+  --bg-card: #091120;
+  --bg-sidebar: #091120;
+  --bg-active: #002247;
 
-  --background: #040810;
-  --on-background: #E6E9EF;
-  --surface: #E6E9EF;
+  --text-primary: #ffffff;
+  --text-secondary: #afaeb2;
+  --text-muted: #848890;
+  --text-caption: #848890;
 
-  --success: #90F677;
-  --error: #E63946;
+  --border: #203e62;
+  --border-soft: #2f3132;
+  --border-dashed: #203e62;
+  --divider: #203e62;
 
-  --black: #FFFFFF;
-  --gray-900: #323233;
-  --gray-700: #646466;
-  --gray-500: #7D7D7F;
-  --gray-400: #AFAEB2;
-  --gray-300: #C8C7CB;
-  --gray-100: #E1E0E5;
-  --gray-50: #F5F6F8;
-  --white: #FEFEFE;
+  --bg-theme-container: #0c1b31;
+  --bg-theme-active: #002247;
+
+  --primary: #007bff;
+
+  --priority-high-bg-dark: #3d2327;
+  --priority-medium-bg-dark: #302f2d;
+  --priority-low-bg-dark: #233332;
+  --priority-container-dark: #0b192d;
 }

@@ -1,1 +1,199 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "yekanbakh";
+  src:
+    url("../assets/fonts/yekan-bakh/YekanBakh-Regular.woff2") format("woff2"),
+    url("../assets/fonts/IRANSansX-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "yekanbakhbold";
+  src: url("./assets/fonts/yekan-bakh/YekanBakh-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer utilities {
+}
+
+.sidebar {
+  background: var(--bg-sidebar);
+}
+
+.card {
+  background: var(--bg-card);
+  transition: background-color 0.3s ease;
+}
+
+.text {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+.main-bg {
+  background: var(--bg-main);
+}
+
+.sidebar-bg {
+  background: var(--bg-sidebar);
+}
+.dashed-card {
+  background: var(--bg-card);
+  border: 2px dashed var(--border-dashed);
+}
+
+.card-bg {
+  background: var(--bg-card);
+  border: 1px border-dashed var(--border-soft);
+}
+
+.active-bg {
+  background: var(--bg-active);
+}
+
+.primary-text {
+  color: var(--text-primary);
+}
+
+.secondary-text {
+  color: var(--text-secondary);
+}
+
+.muted-text {
+  color: var(--text-muted);
+}
+
+.caption-text {
+  color: var(--text-caption);
+}
+
+.border-color {
+  border-color: var(--border);
+}
+
+.soft-border {
+  border-color: var(--border-soft);
+}
+
+.dashed-border {
+  border-color: var(--border-dashed);
+}
+.light-text {
+  color: #afaeb2;
+}
+
+.dark .light-text {
+  color: #52555b;
+}
+.theme-switch {
+  background: var(--bg-theme-container);
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.theme-btn {
+  background: transparent;
+}
+
+.theme-btn.active {
+  background: var(--bg-theme-active);
+  color: var(--text-primary);
+}
+
+.theme-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  border-radius: 8px;
+  transition: 0.3s;
+  color: var(--text-secondary);
+}
+.primary-color {
+  color: var(--primary);
+}
+.divider {
+  border-color: var(--divider);
+}
+.priority-high {
+  color: var(--priority-high);
+  background: var(--priority-high-bg);
+}
+
+.priority-medium {
+  color: var(--priority-medium);
+  background: var(--priority-medium-bg);
+}
+
+.priority-low {
+  color: var(--priority-low);
+  background: var(--priority-low-bg);
+}
+.dark .priority-low {
+  color: #11a483;
+  background: var(--priority-low-bg-dark);
+}
+.hover-primary:hover {
+  border-color: var(--primary);
+}
+.dark .priority-medium {
+  color: #ffaf37;
+  background: var(--priority-medium-bg-dark);
+}
+.btn-primary {
+  background: var(--primary);
+}
+.dark .btn-primary {
+  background: var(--primary-dark-mode);
+}
+.dark .priority-high {
+  color: #ff5f37;
+  background: var(--priority-high-bg-dark);
+}
+
+.primary-color {
+  color: var(--primary);
+}
+.priority-container {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+}
+
+.dark .priority-container {
+  background: var(--priority-container-dark);
+  border: 1px solid #293242;
+}
+
+:not(.dark) .priority-container {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tags-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: 0.2s;
+}
+
+.tags-btn:hover {
+  background: var(--bg-active);
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.dark .tags-btn {
+  background: var(--bg-card);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.dark .tags-btn:hover {
+  background: #1a2942;
+}
